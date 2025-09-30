@@ -1,0 +1,4 @@
+module RunRunCore {
+    header "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/RunRunCore-Swift.h"
+    requires objc
+}

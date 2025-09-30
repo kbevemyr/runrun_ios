@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/master.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/TestApps/watchOS/Sources/RunRunWatchTestApp/main.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main.d",
+    "object": "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main.swiftdeps"
+  }
+}

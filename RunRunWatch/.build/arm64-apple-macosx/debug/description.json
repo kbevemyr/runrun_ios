@@ -1,0 +1,640 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.Runner-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/sources",
+      "importPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "Runner",
+      "moduleOutputPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.swiftmodule",
+      "objects" : [
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "Runner_main",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "runruncore"
+      ],
+      "outputFileMapPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift"
+      ],
+      "tempsPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.RunRunCore-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/sources",
+      "importPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "RunRunCore",
+      "moduleOutputPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule",
+      "objects" : [
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/RunRunCore-Swift.h",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "runruncore"
+      ],
+      "outputFileMapPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift",
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift",
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift",
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift",
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"
+      ],
+      "tempsPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.RunRunWatch-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources",
+      "importPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "RunRunWatch",
+      "moduleOutputPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule",
+      "objects" : [
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/RunRunWatch-Swift.h",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "runrunwatch"
+      ],
+      "outputFileMapPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift"
+      ],
+      "tempsPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "Runner" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "Runner",
+      "-package-name",
+      "runruncore",
+      "-incremental",
+      "-c",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift",
+      "-I",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "Runner_main",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "runruncore",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "RunRunCore" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "RunRunCore",
+      "-package-name",
+      "runruncore",
+      "-incremental",
+      "-c",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift",
+      "-I",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/RunRunCore-Swift.h",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "runruncore",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "RunRunWatch" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "RunRunWatch",
+      "-package-name",
+      "runrunwatch",
+      "-incremental",
+      "-c",
+      "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift",
+      "-I",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/RunRunWatch-Swift.h",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "runrunwatch",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "Runner" : [
+      "RunRunCore"
+    ],
+    "RunRunCore" : [
+
+    ],
+    "RunRunWatch" : [
+      "RunRunCore"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "writeCommands" : {
+    "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner-entitlement.plist"
+    },
+    "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/sources"
+    },
+    "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList"
+    },
+    "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"
+    },
+    "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources"
+    },
+    "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

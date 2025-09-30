@@ -1,0 +1,172 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "RunRunCore-debug.module": ["<RunRunCore-debug.module>"]
+  "RunRunWatch-debug.module": ["<RunRunWatch-debug.module>"]
+  "RunRunWatchTestApp-debug.exe": ["<RunRunWatchTestApp-debug.exe>"]
+  "RunRunWatchTestApp-debug.module": ["<RunRunWatchTestApp-debug.module>"]
+  "Runner-debug.exe": ["<Runner-debug.exe>"]
+  "Runner-debug.module": ["<Runner-debug.module>"]
+  "main": ["<RunRunWatchTestApp-debug.exe>","<RunRunWatchTestApp-debug.module>"]
+  "test": ["<RunRunWatchTestApp-debug.exe>","<RunRunWatchTestApp-debug.module>"]
+default: "main"
+nodes:
+  "/Users/katrin/runrun_ios/TestApps/watchOS/Sources/RunRunWatchTestApp/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp":
+    is-mutated: true
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner":
+    is-mutated: true
+commands:
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp-entitlement.plist"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp-entitlement.plist"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/katrin/runrun_ios/TestApps/watchOS/Sources/RunRunWatchTestApp/main.swift"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/sources"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/sources"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main.swift.o"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.product/Objects.LinkFileList"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/sources"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/sources"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList"
+
+  "/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<RunRunCore-debug.module>":
+    tool: phony
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"]
+    outputs: ["<RunRunCore-debug.module>"]
+
+  "<RunRunWatch-debug.module>":
+    tool: phony
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule"]
+    outputs: ["<RunRunWatch-debug.module>"]
+
+  "<RunRunWatchTestApp-debug.exe>":
+    tool: phony
+    inputs: ["<RunRunWatchTestApp-debug.exe-CodeSigning>"]
+    outputs: ["<RunRunWatchTestApp-debug.exe>"]
+
+  "<RunRunWatchTestApp-debug.module>":
+    tool: phony
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.swiftmodule"]
+    outputs: ["<RunRunWatchTestApp-debug.module>"]
+
+  "<Runner-debug.exe>":
+    tool: phony
+    inputs: ["<Runner-debug.exe-CodeSigning>"]
+    outputs: ["<Runner-debug.exe>"]
+
+  "<Runner-debug.module>":
+    tool: phony
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule"]
+    outputs: ["<Runner-debug.module>"]
+
+  "C.RunRunCore-debug.module":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"]
+    description: "Compiling Swift Module 'RunRunCore' (5 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","RunRunCore","-emit-dependencies","-emit-module","-emit-module-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","-output-file-map","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources","-I","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/RunRunCore-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","runruncore"]
+
+  "C.RunRunWatch-debug.module":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule"]
+    description: "Compiling Swift Module 'RunRunWatch' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","RunRunWatch","-emit-dependencies","-emit-module","-emit-module-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule","-output-file-map","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources","-I","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/RunRunWatch-Swift.h","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","runrunwatch"]
+
+  "C.RunRunWatchTestApp-debug.exe":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.product/Objects.LinkFileList"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/RunRunWatchTestApp"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug","-o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp","-module-name","RunRunWatchTestApp","-emit-executable","-Xlinker","-alias","-Xlinker","_RunRunWatchTestApp_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.5/macosx","-target","arm64-apple-macosx10.13","-Xlinker","-add_ast_path","-Xlinker","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.RunRunWatchTestApp-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp-entitlement.plist"]
+    outputs: ["<RunRunWatchTestApp-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/arm64-apple-macosx/debug/RunRunWatchTestApp"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp-entitlement.plist","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp"]
+
+  "C.RunRunWatchTestApp-debug.module":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/Sources/RunRunWatchTestApp/main.swift","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/sources"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/main.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.swiftmodule"]
+    description: "Compiling Swift Module 'RunRunWatchTestApp' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","RunRunWatchTestApp","-emit-dependencies","-emit-module","-emit-module-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.swiftmodule","-output-file-map","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/output-file-map.json","-incremental","-c","@/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunWatchTestApp.build/sources","-I","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","RunRunWatchTestApp_main","-parse-as-library","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","watchos"]
+
+  "C.Runner-debug.exe":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/Runner"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug","-o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner","-module-name","Runner","-emit-executable","-Xlinker","-alias","-Xlinker","_Runner_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.5/macosx","-target","arm64-apple-macosx10.13","-Xlinker","-add_ast_path","-Xlinker","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.Runner-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist"]
+    outputs: ["<Runner-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/arm64-apple-macosx/debug/Runner"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner"]
+
+  "C.Runner-debug.module":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/sources"]
+    outputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule"]
+    description: "Compiling Swift Module 'Runner' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","Runner","-emit-dependencies","-emit-module","-emit-module-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule","-output-file-map","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/output-file-map.json","-incremental","-c","@/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/Runner.build/sources","-I","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/katrin/runrun_ios/TestApps/watchOS/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","Runner_main","-color-diagnostics","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","runruncore"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/katrin/runrun_ios/TestApps/watchOS/Sources/RunRunWatchTestApp/","/Users/katrin/runrun_ios/TestApps/watchOS/Package.swift","/Users/katrin/runrun_ios/TestApps/watchOS/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

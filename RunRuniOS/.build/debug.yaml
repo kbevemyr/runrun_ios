@@ -1,0 +1,119 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "RunRunCore-debug.module": ["<RunRunCore-debug.module>"]
+  "RunRuniOS-debug.module": ["<RunRuniOS-debug.module>"]
+  "Runner-debug.exe": ["<Runner-debug.exe>"]
+  "Runner-debug.module": ["<Runner-debug.module>"]
+  "main": ["<RunRuniOS-debug.module>"]
+  "test": ["<RunRuniOS-debug.module>"]
+default: "main"
+nodes:
+  "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+  "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner":
+    is-mutated: true
+commands:
+  "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"
+
+  "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/EditorView.swift","/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/PreviewView.swift","/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/RunView.swift","/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/RunViewModel.swift"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/sources"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/sources"
+
+  "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist":
+    tool: write-auxiliary-file
+    inputs: ["<entitlement-plist>","<com.apple.security.get-task-allow>"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist"
+
+  "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/sources"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/sources"
+
+  "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList":
+    tool: write-auxiliary-file
+    inputs: ["<link-file-list>","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList"]
+    description: "Write auxiliary file /Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList"
+
+  "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+
+  "<RunRunCore-debug.module>":
+    tool: phony
+    inputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"]
+    outputs: ["<RunRunCore-debug.module>"]
+
+  "<RunRuniOS-debug.module>":
+    tool: phony
+    inputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunView.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.swiftmodule"]
+    outputs: ["<RunRuniOS-debug.module>"]
+
+  "<Runner-debug.exe>":
+    tool: phony
+    inputs: ["<Runner-debug.exe-CodeSigning>"]
+    outputs: ["<Runner-debug.exe>"]
+
+  "<Runner-debug.module>":
+    tool: phony
+    inputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule"]
+    outputs: ["<Runner-debug.module>"]
+
+  "C.RunRunCore-debug.module":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Engine.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift","/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"]
+    description: "Compiling Swift Module 'RunRunCore' (5 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","RunRunCore","-emit-dependencies","-emit-module","-emit-module-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","-output-file-map","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/sources","-I","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/RunRunCore-Swift.h","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","runruncore"]
+
+  "C.RunRuniOS-debug.module":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/EditorView.swift","/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/PreviewView.swift","/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/RunView.swift","/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/RunViewModel.swift","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/sources"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunView.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.swiftmodule"]
+    description: "Compiling Swift Module 'RunRuniOS' (4 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","RunRuniOS","-emit-dependencies","-emit-module","-emit-module-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.swiftmodule","-output-file-map","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/output-file-map.json","-parse-as-library","-incremental","-c","@/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/sources","-I","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-parse-as-library","-emit-objc-header","-emit-objc-header-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunRuniOS-Swift.h","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","runrunios"]
+
+  "C.Runner-debug.exe":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Engine.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner"]
+    description: "Linking ./.build/arm64-apple-macosx/debug/Runner"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-L","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug","-o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner","-module-name","Runner","-emit-executable","-Xlinker","-alias","-Xlinker","_Runner_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.product/Objects.LinkFileList","-Xlinker","-rpath","-Xlinker","/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift-5.5/macosx","-target","arm64-apple-macosx10.13","-Xlinker","-add_ast_path","-Xlinker","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","-Xlinker","-add_ast_path","-Xlinker","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g"]
+
+  "C.Runner-debug.exe-entitlements":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist"]
+    outputs: ["<Runner-debug.exe-CodeSigning>"]
+    description: "Applying debug entitlements to ./.build/arm64-apple-macosx/debug/Runner"
+    args: ["codesign","--force","--sign","-","--entitlements","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner-entitlement.plist","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner"]
+
+  "C.Runner-debug.module":
+    tool: shell
+    inputs: ["/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/sources"]
+    outputs: ["/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule"]
+    description: "Compiling Swift Module 'Runner' (1 sources)"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-module-name","Runner","-emit-dependencies","-emit-module","-emit-module-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.swiftmodule","-output-file-map","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/output-file-map.json","-incremental","-c","@/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/Runner.build/sources","-I","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug","-target","arm64-apple-macosx10.13","-swift-version","5","-enable-batch-mode","-index-store-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/index/store","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-module-cache-path","/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","Runner_main","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-g","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-Xcc","-g","-package-name","runruncore"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/","/Users/katrin/runrun_ios/RunRuniOS/Package.swift","/Users/katrin/runrun_ios/RunRuniOS/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

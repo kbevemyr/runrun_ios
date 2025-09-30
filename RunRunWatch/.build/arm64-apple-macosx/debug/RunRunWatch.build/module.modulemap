@@ -1,0 +1,4 @@
+module RunRunWatch {
+    header "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/RunRunWatch-Swift.h"
+    requires objc
+}

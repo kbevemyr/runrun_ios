@@ -1,0 +1,24 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "runruncore",
+          "kind" : "fileSystem",
+          "location" : "/Users/katrin/runrun_ios/RunRunCore",
+          "name" : "RunRunCore"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/katrin/runrun_ios/RunRunCore"
+        },
+        "subpath" : "runruncore"
+      }
+    ]
+  },
+  "version" : 6
+}

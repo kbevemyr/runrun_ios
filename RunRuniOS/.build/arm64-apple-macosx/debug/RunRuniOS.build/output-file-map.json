@@ -1,0 +1,29 @@
+{
+  "": {
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/master.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/EditorView.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView.d",
+    "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/PreviewView.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView.d",
+    "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/RunView.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunView.d",
+    "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunView.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunView~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunView.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/RunViewModel.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel.d",
+    "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel.swiftdeps"
+  }
+}

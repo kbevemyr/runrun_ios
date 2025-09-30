@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRunApp/.build/arm64-apple-macosx/debug/Runner.build/master.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/RunRunCore/Sources/Runner/main.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRunApp/.build/arm64-apple-macosx/debug/Runner.build/main.d",
+    "object": "/Users/katrin/runrun_ios/RunRunApp/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRunApp/.build/arm64-apple-macosx/debug/Runner.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRunApp/.build/arm64-apple-macosx/debug/Runner.build/main.swiftdeps"
+  }
+}
