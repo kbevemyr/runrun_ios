@@ -10,6 +10,10 @@ public final class Engine: @unchecked Sendable {
 	private let workout: Workout
 	private let notifier: Notifier?
 	private var state: EngineState = .stopped
+	
+	public var currentState: EngineState {
+		return state
+	}
 	private var currentSegmentIndex: Int = 0
 	private var segmentStartTime: TimeInterval = 0
 	private var pausedElapsed: TimeInterval = 0
@@ -23,6 +27,7 @@ public final class Engine: @unchecked Sendable {
 	public func start() {
 		lock.lock()
 		defer { lock.unlock() }
+		guard state == .stopped else { return }
 		// Om vi är klara, starta om från början
 		if currentSegmentIndex >= workout.segments.count {
 			currentSegmentIndex = 0
@@ -44,8 +49,11 @@ public final class Engine: @unchecked Sendable {
 		lock.lock()
 		defer { lock.unlock() }
 		guard state == .paused else { return }
+		print("▶️ Resume anropad - PausedElapsed innan: \(pausedElapsed)")
 		state = .running
+		// Bevara pausedElapsed vid resume
 		segmentStartTime = Date().timeIntervalSince1970
+		print("▶️ Resume slutförd - PausedElapsed efter: \(pausedElapsed), SegmentStartTime: \(segmentStartTime)")
 	}
 
 	public func skip() {
@@ -128,16 +136,29 @@ public final class Engine: @unchecked Sendable {
 		let currentSegment = workout.segments[currentSegmentIndex]
 		let segmentElapsed = state == .running ? now - segmentStartTime : 0
 		let totalElapsed = pausedElapsed + segmentElapsed
-		let segmentLeft = max(0, currentSegment.seconds - Int(segmentElapsed))
+		let totalSegmentElapsed = Int(segmentElapsed) + Int(pausedElapsed)
+		let segmentLeft = max(0, currentSegment.seconds - totalSegmentElapsed)
 
 		// Beräkna progress
 		let intervalsDone = workout.segments.prefix(currentSegmentIndex).filter { $0.type == .work }.count
 		// Lägg till aktuellt work-segment om det är klart
-		let currentIntervalsDone = intervalsDone + (currentSegment.type == .work && segmentLeft <= 0 ? 1 : 0)
+		let currentIntervalsDone = intervalsDone + (currentSegment.type == .work && totalSegmentElapsed >= currentSegment.seconds ? 1 : 0)
 		let intervalsLeft = workout.totals.totalIntervals - currentIntervalsDone
 		let segmentsDone = currentSegmentIndex
 		let segmentsLeft = workout.segments.count - currentSegmentIndex
-		let timeLeft = workout.totals.totalSeconds - Int(totalElapsed)
+		
+		// Beräkna timeLeft genom att subtrahera tid från tidigare segment + aktuell tid
+		let previousSegmentsElapsed = workout.segments.prefix(currentSegmentIndex).reduce(0) { $0 + $1.seconds }
+// kbb - why do we reset when not running, .pause should just hold and accumulate the pauseElapsed
+        let currentSegmentElapsed = state == .stopped ? 0 : Int(segmentElapsed)
+		let currentSegmentPausedElapsed = Int(pausedElapsed)
+		let totalElapsedCorrected = previousSegmentsElapsed + currentSegmentElapsed + currentSegmentPausedElapsed
+		let timeLeft = workout.totals.totalSeconds - totalElapsedCorrected
+
+		print("TIME 🔍 getStatus() - TimeLeft: \(timeLeft), PreviousSegmentsElapsed: \(previousSegmentsElapsed), CurrentSegmentElapsed: \(currentSegmentElapsed), CurrentSegmentPausedElapsed: \(currentSegmentPausedElapsed), TotalElapsedCorrected: \(totalElapsedCorrected)")
+		print("SEGMENT_TIMER 🔍 getStatus() - SegmentElapsed: \(Int(segmentElapsed)), PausedElapsed: \(Int(pausedElapsed)), TotalSegmentElapsed: \(totalSegmentElapsed), SegmentLeft: \(segmentLeft)")
+		print("INTERVALS 🔍 getStatus() - CurrentIntervalsDone: \(currentIntervalsDone), IntervalsLeft: \(intervalsLeft)")
+		print("SEGMENT 🔍 getStatus() - SegmentsDone: \(segmentsDone), SegmentsLeft: \(segmentsLeft)")
 
 		// Nästa segment
 		let next: Status.Next? = {
@@ -147,13 +168,15 @@ public final class Engine: @unchecked Sendable {
 		}()
 		
 		// Kontrollera om vi ska gå till nästa segment eller om workout är klart
-		if state == .running && segmentLeft <= 0 {
+		// Använd totalSegmentElapsed istället för segmentLeft för att undvika problem med paus
+		print("SEGMENT_CHECK 🔍 getStatus() - State: \(state), TotalSegmentElapsed: \(totalSegmentElapsed), CurrentSegmentSeconds: \(currentSegment.seconds), ShouldAdvance: \(state == .running && totalSegmentElapsed >= currentSegment.seconds)")
+		if state == .running && totalSegmentElapsed >= currentSegment.seconds {
 			if currentSegmentIndex < workout.segments.count - 1 {
-				//print("➡️ Går till nästa segment: \(currentSegmentIndex) -> \(currentSegmentIndex + 1)")
+				print("➡️ Går till nästa segment: \(currentSegmentIndex) -> \(currentSegmentIndex + 1)")
 				advanceToNextSegment()
 			} else {
 				// Detta är det sista segmentet som är klart, markera workout som klar
-				//print("🏁 Sista segmentet klart! Markerar workout som klar")
+				print("🏁 Sista segmentet klart! Markerar workout som klar")
 				currentSegmentIndex = workout.segments.count
 				state = .stopped
 			}
@@ -165,7 +188,7 @@ public final class Engine: @unchecked Sendable {
 				type: currentSegment.type,
 				label: currentSegment.label,
 				seconds: currentSegment.seconds,
-				elapsed: Int(segmentElapsed),
+				elapsed: totalSegmentElapsed,
 				left: segmentLeft
 			),
 			progress: Status.Progress(
@@ -185,6 +208,7 @@ public final class Engine: @unchecked Sendable {
 	}
 
 	private func advanceToNextSegment() {
+		print("🚀 advanceToNextSegment() anropad - CurrentSegmentIndex: \(currentSegmentIndex), PausedElapsed innan: \(pausedElapsed)")
 		// Kontrollera att currentSegmentIndex är giltigt innan vi använder det
 		guard currentSegmentIndex < workout.segments.count else { return }
 		
@@ -192,6 +216,7 @@ public final class Engine: @unchecked Sendable {
 		currentSegmentIndex += 1
 		segmentStartTime = Date().timeIntervalSince1970
 		pausedElapsed = 0
+		print("🚀 advanceToNextSegment() slutförd - Ny SegmentIndex: \(currentSegmentIndex), PausedElapsed efter: \(pausedElapsed)")
 
 		// Notifiera om övergång
 		if currentSegmentIndex >= workout.segments.count {

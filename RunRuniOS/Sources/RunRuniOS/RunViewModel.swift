@@ -21,7 +21,12 @@ public final class RunViewModel: ObservableObject {
 
 	public func start() {
 		guard !isRunning else { return }
-		engine.start()
+		// Om engine är pausad, anropa resume istället för start
+		if engine.currentState == .paused {
+			engine.resume()
+		} else {
+			engine.start()
+		}
 		isRunning = true
 		startTimer()
 	}
@@ -39,7 +44,11 @@ public final class RunViewModel: ObservableObject {
 
 	public func skip() { engine.skip() }
 	public func back() { engine.back() }
-	public func restart() { engine.restart() }
+    public func restart() {
+        engine.restart()
+        // kbb - maybe, can be that the pause
+        isRunning = false
+    }
 
 	private func startTimer() {
 		timerCancellable?.cancel()

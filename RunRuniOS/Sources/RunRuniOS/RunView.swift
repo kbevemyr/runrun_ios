@@ -31,6 +31,7 @@ public struct RunView: View {
 			} else {
 				// Normal workout view
 				VStack(spacing: 20) {
+                    /*
 					Text(timeString(vm.status.progress.elapsedTotal))
 						.font(.system(size: 24, weight: .bold, design: .rounded))
 						.monospacedDigit()
@@ -46,6 +47,7 @@ public struct RunView: View {
 							.font(.headline)
 							.foregroundColor(.secondary)
 					}
+                 */
 					
 					// Current Interval Info
 					VStack(spacing: 8) {
@@ -53,6 +55,7 @@ public struct RunView: View {
 							.font(.headline)
 							.foregroundColor(.secondary)
 						
+                        // Prepare/Work/Rest
 						Text(vm.status.current.type.rawValue.capitalized)
 							.font(.largeTitle)
 							.fontWeight(.bold)
@@ -83,7 +86,7 @@ public struct RunView: View {
 
 						if let next = vm.status.next {
 							HStack {
-								Text("Nästa: \(next.type.rawValue.capitalized)")
+								Text("Next: \(next.type.rawValue.capitalized)")
 								Spacer()
 								Text("\(next.seconds)s")
 							}
@@ -95,23 +98,26 @@ public struct RunView: View {
 			}
 
 			// Kontroller (dölj om workout är klar)
+            Spacer()
 			if vm.status.current.label != "Done" {
 				HStack(spacing: 12) {
-					Button(vm.isRunning ? "Pausa" : "Start") {
+					Button(vm.isRunning ? "Pause" : "Start") {
 						if vm.isRunning {
 							vm.pause()
 						} else {
 							vm.start()
 						}
 					}.buttonStyle(.borderedProminent)
-					Button("Fortsätt") { vm.resume() }
-					Button("Bakåt") { vm.back() }
-					Button("Hoppa över") { vm.skip() }
+                    // kbb added - be able to restart the timer at anytime
+                    Button("Reset") { vm.restart() }
+					//Button("Resume") { vm.resume() }
+					Button("Back") { vm.back() }
+					Button("Skip") { vm.skip() }
 				}
 			} else {
 				// Done-kontroller
 				VStack(spacing: 16) {
-					Button("Starta om") {
+					Button("Reset") {
 						vm.restart()
 					}
 					.buttonStyle(.borderedProminent)
@@ -126,7 +132,7 @@ public struct RunView: View {
 			}
 		}
 		.padding()
-		.navigationTitle("Kör")
+		.navigationTitle("Run")
 	}
 
 	private func timeString(_ seconds: Int) -> String {
@@ -169,8 +175,8 @@ public struct RunView: View {
 			let totalSegments = vm.status.progress.segmentsDone + vm.status.progress.segmentsLeft
 			return "\(totalSegments) av \(totalSegments)"
 		}
-		
-		let currentSegment = vm.status.current.index + 1
+		// kbb - removed the +1
+		let currentSegment = vm.status.current.index //+ 1
 		let totalSegments = vm.status.progress.segmentsDone + vm.status.progress.segmentsLeft
 		return "\(currentSegment) av \(totalSegments)"
 	}
