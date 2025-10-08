@@ -20,77 +20,84 @@ public struct RunView: View {
 				VStack(spacing: 20) {
 					Text("🎉")
 						.font(.system(size: 80))
-					Text("Workout Klar!")
+					Text("Workout Done!")
 						.font(.largeTitle)
 						.fontWeight(.bold)
 						.foregroundColor(.green)
-					Text("Alla \(vm.status.progress.intervalsDone) intervals genomförda")
+                    Text("Alla \(vm.status.progress.intervalsDone) intervals are done in \(workout.totals.totalSeconds)")
 						.font(.headline)
 						.foregroundColor(.secondary)
 				}
 			} else {
 				// Normal workout view
-				VStack(spacing: 20) {
-                    /*
-					Text(timeString(vm.status.progress.elapsedTotal))
-						.font(.system(size: 24, weight: .bold, design: .rounded))
-						.monospacedDigit()
-						.foregroundColor(.secondary)
+				VStack(spacing: 180) {
+                    
+					// Progress bar of workout
+                    GeometryReader {
+                        geo in
+                        VStack(spacing: 4) {
+                            
+                            HStack {
+                                Spacer()
+                                Text("Interval \(currentIntervalNumber) of \(totalIntervals)")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            var progress: Double = Double(workout.totals.totalSeconds-vm.status.progress.timeLeft)/Double(workout.totals.totalSeconds)
+                            ZStack(alignment: .leading) {
+                                Rectangle()
+                                    .foregroundColor(.gray.opacity(0.3))
+                                    .frame(width: geo.size.width, height: 8)
+                                Rectangle()
+                                    .foregroundColor(.blue)
+                                    .frame(width: geo.size.width * CGFloat(progress), height: 8)
+                                    .animation(.easeInOut(duration: progress))
+                            }
+                            .cornerRadius(4)
+                            
+                            HStack {
+                                Spacer()
+                                Text("Time \(timeString(workout.totals.totalSeconds-vm.status.progress.timeLeft)) /  \(timeString(workout.totals.totalSeconds))")
+                            }
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        }
+                    }
+                    
+					// Current Segment Info
 					VStack(spacing: 8) {
-						Text("Total tid: \(timeString(vm.status.progress.elapsedTotal))")
-							.font(.headline)
-							.foregroundColor(.secondary)
-						Text("Intervall \(currentIntervalNumber) av \(totalIntervals)")
-							.font(.headline)
-							.foregroundColor(.secondary)
-						Text("Tid kvar: \(timeString(vm.status.progress.timeLeft))")
-							.font(.headline)
-							.foregroundColor(.secondary)
-					}
-                 */
-					
-					// Current Interval Info
-					VStack(spacing: 8) {
-						Text("Intervall \(currentIntervalNumber) av \(totalIntervals)")
-							.font(.headline)
-							.foregroundColor(.secondary)
+                        // Running time
+                        Text(timeString(vm.status.current.left))
+                            .font(.system(size: 96, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                            .foregroundColor(vm.status.current.left <= 5 ? .red : .primary)
+                        
 						
-                        // Prepare/Work/Rest
-						Text(vm.status.current.type.rawValue.capitalized)
-							.font(.largeTitle)
-							.fontWeight(.bold)
-							.foregroundColor(vm.status.current.type == .work ? .red : .blue)
-						
-						if let label = vm.status.current.label { 
-							Text(label)
-								.font(.title2)
-								.foregroundColor(.secondary)
-						}
+                        // Prepare/Work/Rest/label
+                        HStack {
+                            Text("\(vm.status.current.label ?? vm.status.current.type.rawValue.capitalized) \(timeString(vm.status.current.seconds))")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(vm.status.current.type == .work ? .red : .blue)
+                        }
+                        
+                        Text("Segment \(segmentDisplayText)")
 					}
 					
-					// Timer
-					Text(timeString(vm.status.current.left))
-						.font(.system(size: 64, weight: .bold, design: .rounded))
-						.monospacedDigit()
-						.foregroundColor(vm.status.current.left <= 5 ? .red : .primary)
 
 					// Progress Info
 					VStack(spacing: 8) {
-						HStack {
-							Text("Tid kvar: \(timeString(vm.status.progress.timeLeft))")
-							Spacer()
-							Text("Segment \(segmentDisplayText)")
-						}
-						.font(.subheadline)
-						.foregroundColor(.secondary)
 
 						if let next = vm.status.next {
 							HStack {
-								Text("Next: \(next.type.rawValue.capitalized)")
-								Spacer()
-								Text("\(next.seconds)s")
+								Text("Next:")
+                                    .font(.title)
+                                Text("\(next.label ?? next.type.rawValue.capitalized) \(timeString(next.seconds))")
+                                    .font(.title)
+                                    .fontWeight(.light)
+                                    .foregroundColor(next.type == .work ? .red : .blue)
 							}
-							.font(.subheadline)
+							.font(.headline)
 							.foregroundColor(.secondary)
 						}
 					}
@@ -101,18 +108,41 @@ public struct RunView: View {
             Spacer()
 			if vm.status.current.label != "Done" {
 				HStack(spacing: 12) {
-					Button(vm.isRunning ? "Pause" : "Start") {
-						if vm.isRunning {
-							vm.pause()
-						} else {
-							vm.start()
-						}
-					}.buttonStyle(.borderedProminent)
+					Button(
+						action: { 
+							if vm.isRunning {
+								vm.pause()
+							} else {
+								vm.start()
+							}
+						})
+						{
+                            Image(systemName: {
+                                vm.isRunning ? "pause.fill" : "play.fill"}())
+                        }
+                        .help("playing")
+					
                     // kbb added - be able to restart the timer at anytime
-                    Button("Reset") { vm.restart() }
-					//Button("Resume") { vm.resume() }
-					Button("Back") { vm.back() }
-					Button("Skip") { vm.skip() }
+                    Button {
+                        vm.restart()
+                    } label: {
+						Image(systemName: "arrow.counterclockwise.circle")
+						.help("Reset")
+                    }
+					Button {
+                        vm.back()
+                    } label: {
+                        Image(systemName: "backward.fill")
+						.help("Back")
+                    }
+					
+                    Button {
+                        vm.skip()
+                    } label: {
+                        Image(systemName: "forward.fill")
+						.help("Skip")
+                    }
+					
 				}
 			} else {
 				// Done-kontroller
@@ -175,10 +205,23 @@ public struct RunView: View {
 			let totalSegments = vm.status.progress.segmentsDone + vm.status.progress.segmentsLeft
 			return "\(totalSegments) av \(totalSegments)"
 		}
-		// kbb - removed the +1
-		let currentSegment = vm.status.current.index //+ 1
+
+		let currentSegment = vm.status.current.index
 		let totalSegments = vm.status.progress.segmentsDone + vm.status.progress.segmentsLeft
 		return "\(currentSegment) av \(totalSegments)"
 	}
 }
+ 
+#if DEBUG
+#Preview {
+	NavigationView {
+		RunView(workout: sampleWorkout)
+	}
+}
+
+private var sampleWorkout: Workout {
+	let parser = ProgramParser()
+	return try! parser.parse("P5 (x2 W20@VO2 R10)")
+}
+#endif
 #endif

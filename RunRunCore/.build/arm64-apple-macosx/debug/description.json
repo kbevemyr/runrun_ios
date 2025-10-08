@@ -137,6 +137,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
         },
         {
@@ -152,7 +156,8 @@
         "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o",
         "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o",
         "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o",
-        "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o"
+        "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o",
+        "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -222,6 +227,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"
         }
       ],
@@ -230,7 +239,8 @@
         "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift",
         "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift",
         "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift",
-        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift",
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift"
       ],
       "tempsPath" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build",
       "wholeModuleOptimization" : false
@@ -395,6 +405,7 @@
       "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift",
       "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift",
       "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift",
       "-I",
       "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug",
       "-target",
@@ -571,6 +582,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o"
         }
       ],
@@ -602,6 +617,10 @@
         {
           "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift"
         }
       ],
       "outputFilePath" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"
@@ -632,6 +651,10 @@
         {
           "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o"
         },
         {
           "kind" : "file",

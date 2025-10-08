@@ -8,6 +8,12 @@
     "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView~partial.swiftmodule",
     "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/EditorView.swiftdeps"
   },
+  "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/MainAppView.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/MainAppView.d",
+    "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/MainAppView.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/MainAppView~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/MainAppView.swiftdeps"
+  },
   "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/PreviewView.swift": {
     "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView.d",
     "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/PreviewView.swift.o",
@@ -25,5 +31,11 @@
     "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel.swift.o",
     "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel~partial.swiftmodule",
     "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunViewModel.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/RunRuniOS/Sources/RunRuniOS/WorkoutLibraryView.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/WorkoutLibraryView.d",
+    "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/WorkoutLibraryView.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/WorkoutLibraryView~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRuniOS.build/WorkoutLibraryView.swiftdeps"
   }
 }

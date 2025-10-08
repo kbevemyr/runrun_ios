@@ -31,5 +31,11 @@
     "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o",
     "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser~partial.swiftmodule",
     "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swiftdeps"
+  },
+  "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift": {
+    "dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.d",
+    "object": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o",
+    "swiftmodule": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage~partial.swiftmodule",
+    "swift-dependencies": "/Users/katrin/runrun_ios/RunRuniOS/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swiftdeps"
   }
 }

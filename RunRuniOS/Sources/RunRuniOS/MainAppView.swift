@@ -1,0 +1,36 @@
+import SwiftUI
+import RunRunCore
+
+#if os(iOS)
+
+/// Huvudvy för RunRun appen med tabs för Library och Editor
+public struct MainAppView: View {
+	@State private var selectedTab = 0
+	
+	public init() {}
+	
+	public var body: some View {
+		TabView(selection: $selectedTab) {
+			WorkoutLibraryView()
+				.tabItem {
+					Label("Library", systemImage: "list.bullet")
+				}
+				.tag(0)
+			
+			EditorView()
+				.tabItem {
+					Label("Editor", systemImage: "pencil")
+				}
+				.tag(1)
+		}
+	}
+}
+
+#if DEBUG
+#Preview {
+	MainAppView()
+}
+#endif
+
+#endif
+

@@ -10,6 +10,12 @@ import RunRunCore
 import RunRuniOS
 
 struct ContentView: View {
+    var body: some View {
+        MainAppView()
+    }
+}
+
+struct LegacyContentView: View {
     @State private var workoutProgram = "P10 (x3 (x3 W70@VO2 R20) R2m@set-rest)"
     @State private var workout: Workout?
     @State private var errorMessage: String?
@@ -160,6 +166,10 @@ struct ContentView: View {
     }
 }
 
-#Preview {
+#Preview("Modern View") {
     ContentView()
+}
+
+#Preview("Legacy View") {
+    LegacyContentView()
 }

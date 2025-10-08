@@ -1,6 +1,6 @@
 import Foundation
 
-public struct WorkoutExport: Codable {
+public struct WorkoutExport: Codable, Identifiable {
 	public let version: Int
 	public let id: String
 	public let title: String

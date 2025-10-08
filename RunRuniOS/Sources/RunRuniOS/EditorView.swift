@@ -8,7 +8,11 @@ public struct EditorView: View {
 	@State private var validationMessage: String = ""
 	@State private var previewWorkout: Workout?
 	@State private var debounceTask: Task<Void, Never>?
+	@State private var showingSaveDialog = false
+	@State private var saveTitle = ""
+	@State private var saveNotes = ""
 	private let manager = ImportExportManager()
+	private let storage = WorkoutStorage()
 	private let onProgramUpdated: ((String) -> Void)?
 
 	public init(program: String = "W30 R10", onProgramUpdated: ((String) -> Void)? = nil) {
@@ -32,14 +36,21 @@ public struct EditorView: View {
 						debouncedPreview()
 					}
 
-					HStack {
-						Button("Validera") { validate() }
-						Button("Förhandsvisa") { preview() }
-						if onProgramUpdated != nil {
-							Button("Spara") { saveProgram() }
-								.buttonStyle(.borderedProminent)
-						}
+				HStack {
+					Button("Validera") { validate() }
+					Button("Förhandsvisa") { preview() }
+					Button {
+						showingSaveDialog = true
+					} label: {
+						Label("Save", systemImage: "square.and.arrow.down")
 					}
+					.buttonStyle(.borderedProminent)
+					.disabled(previewWorkout == nil)
+					
+					if onProgramUpdated != nil {
+						Button("Apply") { saveProgram() }
+					}
+				}
 
 					if !validationMessage.isEmpty {
 						Text(validationMessage).font(.footnote).foregroundColor(.secondary)
@@ -63,6 +74,15 @@ public struct EditorView: View {
 				}
 			}
 			.navigationTitle("Editor")
+			.sheet(isPresented: $showingSaveDialog) {
+				SaveWorkoutDialog(
+					programText: programText,
+					initialTitle: saveTitle,
+					initialNotes: saveNotes
+				) { title, notes in
+					saveToLibrary(title: title, notes: notes)
+				}
+			}
 		}
 	}
 
@@ -90,6 +110,19 @@ public struct EditorView: View {
 		}
 	}
 	
+	private func saveToLibrary(title: String, notes: String) {
+		guard let workout = previewWorkout else { return }
+		
+		do {
+			try storage.save(workout: workout, title: title, notes: notes, author: "user")
+			validationMessage = "Saved to library!"
+			saveTitle = title
+			saveNotes = notes
+		} catch {
+			validationMessage = "Error saving: \(error.localizedDescription)"
+		}
+	}
+	
 	private func debouncedPreview() {
 		// Avbryt tidigare task
 		debounceTask?.cancel()
@@ -104,6 +137,60 @@ public struct EditorView: View {
 			// Kör preview på main thread
 			await MainActor.run {
 				preview()
+			}
+		}
+	}
+}
+
+// MARK: - Save Workout Dialog
+
+struct SaveWorkoutDialog: View {
+	@Environment(\.dismiss) var dismiss
+	@State private var title: String
+	@State private var notes: String
+	let programText: String
+	let onSave: (String, String) -> Void
+	
+	init(programText: String, initialTitle: String, initialNotes: String, onSave: @escaping (String, String) -> Void) {
+		self.programText = programText
+		self._title = State(initialValue: initialTitle)
+		self._notes = State(initialValue: initialNotes)
+		self.onSave = onSave
+	}
+	
+	var body: some View {
+		NavigationView {
+			Form {
+				Section("Workout Title") {
+					TextField("Enter title", text: $title)
+				}
+				
+				Section("Notes (optional)") {
+					TextEditor(text: $notes)
+						.frame(minHeight: 80)
+				}
+				
+				Section("Program") {
+					Text(programText)
+						.font(.system(.body, design: .monospaced))
+						.foregroundColor(.secondary)
+				}
+			}
+			.navigationTitle("Save Workout")
+			.navigationBarTitleDisplayMode(.inline)
+			.toolbar {
+				ToolbarItem(placement: .cancellationAction) {
+					Button("Cancel") {
+						dismiss()
+					}
+				}
+				ToolbarItem(placement: .confirmationAction) {
+					Button("Save") {
+						onSave(title, notes)
+						dismiss()
+					}
+					.disabled(title.isEmpty)
+				}
 			}
 		}
 	}
@@ -163,4 +250,13 @@ struct ListPreview: View {
 	}
 }
 
+#if DEBUG
+#Preview {
+    NavigationView {
+        EditorView(program: "P10 (x3 W60 R20)")
+        // "P10 (x3 (x3 W60 R20 W40 R20 W20) R120@restset)"
+    }
+}
+
+#endif
 #endif
