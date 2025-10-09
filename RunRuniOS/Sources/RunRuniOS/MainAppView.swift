@@ -6,6 +6,7 @@ import RunRunCore
 /// Huvudvy för RunRun appen med tabs för Library och Editor
 public struct MainAppView: View {
 	@State private var selectedTab = 0
+	@StateObject private var connectivity = WatchConnectivityManager.shared
 	
 	public init() {}
 	
@@ -22,6 +23,16 @@ public struct MainAppView: View {
 					Label("Editor", systemImage: "pencil")
 				}
 				.tag(1)
+			
+			WatchSyncView()
+				.tabItem {
+					Label("Watch", systemImage: "applewatch")
+				}
+				.tag(2)
+		}
+		.onAppear {
+			// Aktivera WatchConnectivity vid start
+			print("WatchConnectivity aktiverad")
 		}
 	}
 }

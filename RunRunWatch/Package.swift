@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "RunRunWatch",
-    platforms: [.watchOS(.v6)],
+    platforms: [.iOS(.v17), .watchOS(.v10)],
     products: [
         .library(name: "RunRunWatch", targets: ["RunRunWatch"])
     ],

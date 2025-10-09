@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "RunRunCore",
     platforms: [
-        .iOS(.v17), .watchOS(.v6)
+        .iOS(.v17), .watchOS(.v10)
     ],
     products: [
         .library(name: "RunRunCore", targets: ["RunRunCore"]),

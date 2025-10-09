@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "RunRunWatchTestApp",
-    platforms: [.watchOS(.v9)],
+    platforms: [.watchOS(.v10)],
     products: [
         .executable(name: "RunRunWatchTestApp", targets: ["RunRunWatchTestApp"])
     ],

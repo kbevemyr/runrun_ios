@@ -234,6 +234,7 @@
 			packageReferences = (
 				54A3EDF32E736C06001AD51B /* XCLocalSwiftPackageReference "../../RunRunCore" */,
 				54A3EDF72E749CE5001AD51B /* XCLocalSwiftPackageReference "../../RunRuniOS" */,
+				547FB1842E969FE4004C9D1B /* XCLocalSwiftPackageReference "../../RunRunWatch" */,
 			);
 			productRefGroup = 54A3EDC72E736B98001AD51B /* Products */;
 			projectDirPath = "";
@@ -610,6 +611,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
+		547FB1842E969FE4004C9D1B /* XCLocalSwiftPackageReference "../../RunRunWatch" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../RunRunWatch;
+		};
 		54A3EDF32E736C06001AD51B /* XCLocalSwiftPackageReference "../../RunRunCore" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../RunRunCore;

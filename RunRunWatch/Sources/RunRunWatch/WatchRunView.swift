@@ -85,4 +85,27 @@ public final class WatchRunViewModel: ObservableObject {
 			}
 	}
 }
+
+// MARK: - Preview
+
+#if DEBUG
+#Preview("Running Workout", traits: .fixedLayout(width: 205, height: 251)) {
+	let workout = try! ProgramParser().parse("W60 R30 W60 R30")
+	WatchRunView(workout: workout)
+		.previewDevice(PreviewDevice(rawValue: "Apple Watch Series 9 (45mm)"))
+}
+
+#Preview("With Label", traits: .fixedLayout(width: 205, height: 251)) {
+	let workout = try! ProgramParser().parse("W30/warmup R60/sprint W30/cooldown")
+	WatchRunView(workout: workout)
+		.previewDevice(PreviewDevice(rawValue: "Apple Watch Series 9 (45mm)"))
+}
+
+#Preview("Long Intervals", traits: .fixedLayout(width: 176, height: 215)) {
+	let workout = try! ProgramParser().parse("W120 R180 W120 R180 W120")
+	WatchRunView(workout: workout)
+		.previewDevice(PreviewDevice(rawValue: "Apple Watch SE (40mm)"))
+}
+#endif
+
 #endif
