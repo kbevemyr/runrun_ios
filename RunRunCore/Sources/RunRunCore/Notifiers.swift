@@ -31,8 +31,8 @@ public final class iOSNotifier: Notifier {
 		#endif
 	}
 	
-	private func playSound(systemSoundID: SystemSoundID) {
-		#if os(iOS)
+	private func playSound(systemSoundID: UInt32) {
+		#if os(iOS) && canImport(AudioToolbox)
 		AudioServicesPlaySystemSound(systemSoundID)
 		#endif
 	}

@@ -104,7 +104,7 @@ public struct RunView: View {
 				}
 			}
 
-			// Kontroller (dölj om workout är klar)
+			// Kontroller
             Spacer()
 			if vm.status.current.label != "Done" {
 				HStack(spacing: 12) {
@@ -162,7 +162,7 @@ public struct RunView: View {
 			}
 		}
 		.padding()
-		.navigationTitle("Run")
+		.navigationTitle("Run Timer")
 	}
 
 	private func timeString(_ seconds: Int) -> String {

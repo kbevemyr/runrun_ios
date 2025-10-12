@@ -1,4 +1,5 @@
 import Foundation
+#if os(iOS) || os(watchOS)
 import WatchConnectivity
 
 /// Hanterar kommunikation mellan iOS och watchOS via WatchConnectivity
@@ -191,4 +192,6 @@ extension WatchConnectivityManager: WCSessionDelegate {
 	}
 	#endif
 }
+
+#endif // os(iOS) || os(watchOS)
 

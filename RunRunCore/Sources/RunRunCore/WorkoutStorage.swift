@@ -20,11 +20,13 @@ public final class WorkoutStorage: ObservableObject {
 		}
 		
 		// Lyssna på workout-uppdateringar från Watch
+		#if os(iOS) || os(watchOS)
 		if syncWithWatch {
 			WatchConnectivityManager.shared.onWorkoutsReceived { [weak self] receivedWorkouts in
 				self?.handleReceivedWorkouts(receivedWorkouts)
 			}
 		}
+		#endif
 	}
 	
 	// MARK: - Save & Load
@@ -45,9 +47,11 @@ public final class WorkoutStorage: ObservableObject {
 		self.workouts = allWorkouts
 		
 		// Synka med Watch
+		#if os(iOS) || os(watchOS)
 		if shouldSyncWithWatch {
 			WatchConnectivityManager.shared.syncWorkouts(allWorkouts)
 		}
+		#endif
 	}
 	
 	/// Laddar alla sparade workouts
@@ -79,9 +83,11 @@ public final class WorkoutStorage: ObservableObject {
 		self.workouts = allWorkouts
 		
 		// Synka med Watch
+		#if os(iOS) || os(watchOS)
 		if shouldSyncWithWatch {
 			WatchConnectivityManager.shared.syncWorkouts(allWorkouts)
 		}
+		#endif
 	}
 	
 	// MARK: - Export för delning
@@ -127,6 +133,7 @@ public final class WorkoutStorage: ObservableObject {
 	
 	// MARK: - Watch Sync
 	
+	#if os(iOS) || os(watchOS)
 	/// Hämtar workouts från Watch
 	public func requestSyncFromWatch() {
 		guard shouldSyncWithWatch else { return }
@@ -165,6 +172,7 @@ public final class WorkoutStorage: ObservableObject {
 			print("Kunde inte hantera mottagna workouts: \(error.localizedDescription)")
 		}
 	}
+	#endif
 	
 	/// Importerar ett workout från fil-URL
 	public func importFromFile(_ url: URL) throws -> String {

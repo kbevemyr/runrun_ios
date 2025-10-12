@@ -133,6 +133,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WatchConnectivityManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
         },
         {
@@ -148,7 +156,9 @@
         "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/ImportExport.swift.o",
         "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Models.swift.o",
         "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Notifiers.swift.o",
-        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o"
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/Parser.swift.o",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/WatchConnectivityManager.swift.o",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -218,6 +228,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/WatchConnectivityManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.swiftmodule"
         }
       ],
@@ -226,7 +244,9 @@
         "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/ImportExport.swift",
         "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift",
         "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift",
-        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift",
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WatchConnectivityManager.swift",
+        "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift"
       ],
       "tempsPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build",
       "wholeModuleOptimization" : false
@@ -239,6 +259,10 @@
         {
           "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchWorkoutListView.swift"
         },
         {
           "kind" : "file",
@@ -257,7 +281,8 @@
       "moduleName" : "RunRunWatch",
       "moduleOutputPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule",
       "objects" : [
-        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o"
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchRunView.swift.o",
+        "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchWorkoutListView.swift.o"
       ],
       "otherArguments" : [
         "-target",
@@ -311,11 +336,16 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/WatchWorkoutListView.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.swiftmodule"
         }
       ],
       "sources" : [
-        "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift"
+        "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift",
+        "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchWorkoutListView.swift"
       ],
       "tempsPath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build",
       "wholeModuleOptimization" : false
@@ -394,6 +424,8 @@
       "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Models.swift",
       "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Notifiers.swift",
       "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WatchConnectivityManager.swift",
+      "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift",
       "-I",
       "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
       "-target",
@@ -450,6 +482,7 @@
       "-incremental",
       "-c",
       "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift",
+      "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchWorkoutListView.swift",
       "-I",
       "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug",
       "-target",
@@ -573,6 +606,14 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/WatchConnectivityManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/WorkoutStorage.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/Runner.build/main.swift.o"
         }
       ],
@@ -604,6 +645,14 @@
         {
           "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/Parser.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WatchConnectivityManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunCore/Sources/RunRunCore/WorkoutStorage.swift"
         }
       ],
       "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunCore.build/sources"
@@ -618,6 +667,10 @@
         {
           "kind" : "file",
           "name" : "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchRunView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/katrin/runrun_ios/RunRunWatch/Sources/RunRunWatch/WatchWorkoutListView.swift"
         }
       ],
       "outputFilePath" : "/Users/katrin/runrun_ios/RunRunWatch/.build/arm64-apple-macosx/debug/RunRunWatch.build/sources"
