@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import RunRunTimer
+//@testable import RunRunTimer
 
 final class RunRunTimerTests: XCTestCase {
 

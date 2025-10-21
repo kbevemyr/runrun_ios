@@ -3,17 +3,46 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		548DD58F2E9FB6EB00695563 /* RunRunTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD58E2E9FB6EB00695563 /* RunRunTimerApp.swift */; };
+		540A34932E9FC539000E9C3C /* RunRunCore in Frameworks */ = {isa = PBXBuildFile; productRef = 540A34922E9FC539000E9C3C /* RunRunCore */; };
+		540A349A2E9FCE45000E9C3C /* WatchSyncView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34942E9FCE45000E9C3C /* WatchSyncView.swift */; };
+		540A349B2E9FCE45000E9C3C /* RunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34952E9FCE45000E9C3C /* RunView.swift */; };
+		540A349C2E9FCE45000E9C3C /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34962E9FCE45000E9C3C /* PreviewView.swift */; };
+		540A349D2E9FCE45000E9C3C /* RunViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34972E9FCE45000E9C3C /* RunViewModel.swift */; };
+		540A349E2E9FCE45000E9C3C /* RunRunTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34982E9FCE45000E9C3C /* RunRunTimerApp.swift */; };
+		540A349F2E9FCE45000E9C3C /* WorkoutLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34992E9FCE45000E9C3C /* WorkoutLibraryView.swift */; };
+		540A34A22E9FCE5B000E9C3C /* MainAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34A02E9FCE5B000E9C3C /* MainAppView.swift */; };
+		540A34A32E9FCE5B000E9C3C /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34A12E9FCE5B000E9C3C /* EditorView.swift */; };
+		540A34A62E9FCE95000E9C3C /* WatchWorkoutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34A42E9FCE95000E9C3C /* WatchWorkoutListView.swift */; };
+		540A34A72E9FCE95000E9C3C /* WatchRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34A52E9FCE95000E9C3C /* WatchRunView.swift */; };
+		540A34A92E9FD033000E9C3C /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540A34A82E9FD033000E9C3C /* WatchConnectivity.framework */; };
+		540A34AA2E9FD044000E9C3C /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540A34A82E9FD033000E9C3C /* WatchConnectivity.framework */; };
 		548DD5912E9FB6EB00695563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5902E9FB6EB00695563 /* ContentView.swift */; };
 		548DD5932E9FB6ED00695563 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5922E9FB6ED00695563 /* Assets.xcassets */; };
 		548DD5962E9FB6ED00695563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5952E9FB6ED00695563 /* Preview Assets.xcassets */; };
 		548DD5A02E9FB6ED00695563 /* RunRunTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD59F2E9FB6ED00695563 /* RunRunTimerTests.swift */; };
 		548DD5AA2E9FB6ED00695563 /* RunRunTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5A92E9FB6ED00695563 /* RunRunTimerUITests.swift */; };
 		548DD5AC2E9FB6ED00695563 /* RunRunTimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5AB2E9FB6ED00695563 /* RunRunTimerUITestsLaunchTests.swift */; };
+		548DD5BF2E9FB80900695563 /* RunRunTimer_Watch_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5BE2E9FB80900695563 /* RunRunTimer_Watch_AppApp.swift */; };
+		548DD5C12E9FB80900695563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5C02E9FB80900695563 /* ContentView.swift */; };
+		548DD5C32E9FB80A00695563 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5C22E9FB80A00695563 /* Assets.xcassets */; };
+		548DD5C62E9FB80A00695563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5C52E9FB80A00695563 /* Preview Assets.xcassets */; };
+		548DD5D02E9FB80A00695563 /* RunRunTimer_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5CF2E9FB80A00695563 /* RunRunTimer_Watch_AppTests.swift */; };
+		548DD5DA2E9FB80A00695563 /* RunRunTimer_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5D92E9FB80A00695563 /* RunRunTimer_Watch_AppUITests.swift */; };
+		548DD5DC2E9FB80A00695563 /* RunRunTimer_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5DB2E9FB80A00695563 /* RunRunTimer_Watch_AppUITestsLaunchTests.swift */; };
+		548DD5E22E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension).app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 548DD5E12E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension).app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		548DD5E72E9FB80A00695563 /* RunRunTimer_Watch_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5E62E9FB80A00695563 /* RunRunTimer_Watch_AppApp.swift */; };
+		548DD5E92E9FB80A00695563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5E82E9FB80A00695563 /* ContentView.swift */; };
+		548DD5EB2E9FB80B00695563 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5EA2E9FB80B00695563 /* Assets.xcassets */; };
+		548DD5EE2E9FB80B00695563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5ED2E9FB80B00695563 /* Preview Assets.xcassets */; };
+		548DD5F82E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5F72E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppTests.swift */; };
+		548DD6022E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD6012E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITests.swift */; };
+		548DD6042E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD6032E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITestsLaunchTests.swift */; };
+		548DD61A2E9FBA8A00695563 /* RunRunCore in Frameworks */ = {isa = PBXBuildFile; productRef = 548DD6192E9FBA8A00695563 /* RunRunCore */; };
+		548DD61C2E9FBB2200695563 /* RunRunCore in Frameworks */ = {isa = PBXBuildFile; productRef = 548DD61B2E9FBB2200695563 /* RunRunCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,11 +60,70 @@
 			remoteGlobalIDString = 548DD58A2E9FB6EB00695563;
 			remoteInfo = RunRunTimer;
 		};
+		548DD5CC2E9FB80A00695563 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548DD5832E9FB6EB00695563 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 548DD5BB2E9FB80900695563;
+			remoteInfo = "RunRunTimer Watch App";
+		};
+		548DD5D62E9FB80A00695563 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548DD5832E9FB6EB00695563 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 548DD5BB2E9FB80900695563;
+			remoteInfo = "RunRunTimer Watch App";
+		};
+		548DD5E32E9FB80A00695563 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548DD5832E9FB6EB00695563 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 548DD5E02E9FB80A00695563;
+			remoteInfo = "RunRunTimer Watch App Watch App";
+		};
+		548DD5F42E9FB80B00695563 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548DD5832E9FB6EB00695563 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 548DD5E02E9FB80A00695563;
+			remoteInfo = "RunRunTimer Watch App Watch App";
+		};
+		548DD5FE2E9FB80B00695563 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 548DD5832E9FB6EB00695563 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 548DD5E02E9FB80A00695563;
+			remoteInfo = "RunRunTimer Watch App Watch App";
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		548DD6082E9FB80B00695563 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				548DD5E22E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension).app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		548DD58B2E9FB6EB00695563 /* RunRunTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunRunTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		548DD58E2E9FB6EB00695563 /* RunRunTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimerApp.swift; sourceTree = "<group>"; };
+		540A34942E9FCE45000E9C3C /* WatchSyncView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSyncView.swift; sourceTree = "<group>"; };
+		540A34952E9FCE45000E9C3C /* RunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunView.swift; sourceTree = "<group>"; };
+		540A34962E9FCE45000E9C3C /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		540A34972E9FCE45000E9C3C /* RunViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunViewModel.swift; sourceTree = "<group>"; };
+		540A34982E9FCE45000E9C3C /* RunRunTimerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunRunTimerApp.swift; sourceTree = "<group>"; };
+		540A34992E9FCE45000E9C3C /* WorkoutLibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutLibraryView.swift; sourceTree = "<group>"; };
+		540A34A02E9FCE5B000E9C3C /* MainAppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAppView.swift; sourceTree = "<group>"; };
+		540A34A12E9FCE5B000E9C3C /* EditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		540A34A42E9FCE95000E9C3C /* WatchWorkoutListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWorkoutListView.swift; sourceTree = "<group>"; };
+		540A34A52E9FCE95000E9C3C /* WatchRunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchRunView.swift; sourceTree = "<group>"; };
+		540A34A82E9FD033000E9C3C /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		548DD58B2E9FB6EB00695563 /* RunRunTimer (iOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RunRunTimer (iOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		548DD5902E9FB6EB00695563 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		548DD5922E9FB6ED00695563 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		548DD5952E9FB6ED00695563 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -44,6 +132,26 @@
 		548DD5A52E9FB6ED00695563 /* RunRunTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunRunTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		548DD5A92E9FB6ED00695563 /* RunRunTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimerUITests.swift; sourceTree = "<group>"; };
 		548DD5AB2E9FB6ED00695563 /* RunRunTimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		548DD5BC2E9FB80900695563 /* RunRunTimer Watch (watch app/bundle).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RunRunTimer Watch (watch app/bundle).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		548DD5BE2E9FB80900695563 /* RunRunTimer_Watch_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_AppApp.swift; sourceTree = "<group>"; };
+		548DD5C02E9FB80900695563 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		548DD5C22E9FB80A00695563 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		548DD5C52E9FB80A00695563 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		548DD5CB2E9FB80A00695563 /* RunRunTimer Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RunRunTimer Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		548DD5CF2E9FB80A00695563 /* RunRunTimer_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_AppTests.swift; sourceTree = "<group>"; };
+		548DD5D52E9FB80A00695563 /* RunRunTimer Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RunRunTimer Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		548DD5D92E9FB80A00695563 /* RunRunTimer_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		548DD5DB2E9FB80A00695563 /* RunRunTimer_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		548DD5E12E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RunRunTimer Watch Extension (watch extension).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		548DD5E62E9FB80A00695563 /* RunRunTimer_Watch_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_AppApp.swift; sourceTree = "<group>"; };
+		548DD5E82E9FB80A00695563 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		548DD5EA2E9FB80B00695563 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		548DD5ED2E9FB80B00695563 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		548DD5F32E9FB80B00695563 /* RunRunTimer Watch App Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RunRunTimer Watch App Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		548DD5F72E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_App_Watch_AppTests.swift; sourceTree = "<group>"; };
+		548DD5FD2E9FB80B00695563 /* RunRunTimer Watch App Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RunRunTimer Watch App Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		548DD6012E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_App_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		548DD6032E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRunTimer_Watch_App_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +159,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				548DD61A2E9FBA8A00695563 /* RunRunCore in Frameworks */,
+				540A34A92E9FD033000E9C3C /* WatchConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,25 +178,91 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		548DD5B92E9FB80900695563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD61C2E9FBB2200695563 /* RunRunCore in Frameworks */,
+				540A34AA2E9FD044000E9C3C /* WatchConnectivity.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5C82E9FB80A00695563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5D22E9FB80A00695563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5DE2E9FB80A00695563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540A34932E9FC539000E9C3C /* RunRunCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5F02E9FB80B00695563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5FA2E9FB80B00695563 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		540A34912E9FC539000E9C3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				540A34A82E9FD033000E9C3C /* WatchConnectivity.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		548DD5822E9FB6EB00695563 = {
 			isa = PBXGroup;
 			children = (
 				548DD58D2E9FB6EB00695563 /* RunRunTimer */,
 				548DD59E2E9FB6ED00695563 /* RunRunTimerTests */,
 				548DD5A82E9FB6ED00695563 /* RunRunTimerUITests */,
+				548DD5BD2E9FB80900695563 /* RunRunTimer Watch App */,
+				548DD5CE2E9FB80A00695563 /* RunRunTimer Watch AppTests */,
+				548DD5D82E9FB80A00695563 /* RunRunTimer Watch AppUITests */,
+				548DD5E52E9FB80A00695563 /* RunRunTimer Watch App Watch App */,
+				548DD5F62E9FB80B00695563 /* RunRunTimer Watch App Watch AppTests */,
+				548DD6002E9FB80B00695563 /* RunRunTimer Watch App Watch AppUITests */,
 				548DD58C2E9FB6EB00695563 /* Products */,
+				540A34912E9FC539000E9C3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		548DD58C2E9FB6EB00695563 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				548DD58B2E9FB6EB00695563 /* RunRunTimer.app */,
+				548DD58B2E9FB6EB00695563 /* RunRunTimer (iOS).app */,
 				548DD59B2E9FB6ED00695563 /* RunRunTimerTests.xctest */,
 				548DD5A52E9FB6ED00695563 /* RunRunTimerUITests.xctest */,
+				548DD5BC2E9FB80900695563 /* RunRunTimer Watch (watch app/bundle).app */,
+				548DD5CB2E9FB80A00695563 /* RunRunTimer Watch AppTests.xctest */,
+				548DD5D52E9FB80A00695563 /* RunRunTimer Watch AppUITests.xctest */,
+				548DD5E12E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension).app */,
+				548DD5F32E9FB80B00695563 /* RunRunTimer Watch App Watch AppTests.xctest */,
+				548DD5FD2E9FB80B00695563 /* RunRunTimer Watch App Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,7 +270,14 @@
 		548DD58D2E9FB6EB00695563 /* RunRunTimer */ = {
 			isa = PBXGroup;
 			children = (
-				548DD58E2E9FB6EB00695563 /* RunRunTimerApp.swift */,
+				540A34A12E9FCE5B000E9C3C /* EditorView.swift */,
+				540A34A02E9FCE5B000E9C3C /* MainAppView.swift */,
+				540A34962E9FCE45000E9C3C /* PreviewView.swift */,
+				540A34982E9FCE45000E9C3C /* RunRunTimerApp.swift */,
+				540A34952E9FCE45000E9C3C /* RunView.swift */,
+				540A34972E9FCE45000E9C3C /* RunViewModel.swift */,
+				540A34942E9FCE45000E9C3C /* WatchSyncView.swift */,
+				540A34992E9FCE45000E9C3C /* WorkoutLibraryView.swift */,
 				548DD5902E9FB6EB00695563 /* ContentView.swift */,
 				548DD5922E9FB6ED00695563 /* Assets.xcassets */,
 				548DD5942E9FB6ED00695563 /* Preview Content */,
@@ -127,12 +310,86 @@
 			path = RunRunTimerUITests;
 			sourceTree = "<group>";
 		};
+		548DD5BD2E9FB80900695563 /* RunRunTimer Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				548DD5BE2E9FB80900695563 /* RunRunTimer_Watch_AppApp.swift */,
+				548DD5C02E9FB80900695563 /* ContentView.swift */,
+				548DD5C22E9FB80A00695563 /* Assets.xcassets */,
+				548DD5C42E9FB80A00695563 /* Preview Content */,
+			);
+			path = "RunRunTimer Watch App";
+			sourceTree = "<group>";
+		};
+		548DD5C42E9FB80A00695563 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				548DD5C52E9FB80A00695563 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		548DD5CE2E9FB80A00695563 /* RunRunTimer Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				548DD5CF2E9FB80A00695563 /* RunRunTimer_Watch_AppTests.swift */,
+			);
+			path = "RunRunTimer Watch AppTests";
+			sourceTree = "<group>";
+		};
+		548DD5D82E9FB80A00695563 /* RunRunTimer Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				548DD5D92E9FB80A00695563 /* RunRunTimer_Watch_AppUITests.swift */,
+				548DD5DB2E9FB80A00695563 /* RunRunTimer_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "RunRunTimer Watch AppUITests";
+			sourceTree = "<group>";
+		};
+		548DD5E52E9FB80A00695563 /* RunRunTimer Watch App Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				540A34A52E9FCE95000E9C3C /* WatchRunView.swift */,
+				540A34A42E9FCE95000E9C3C /* WatchWorkoutListView.swift */,
+				548DD5E62E9FB80A00695563 /* RunRunTimer_Watch_AppApp.swift */,
+				548DD5E82E9FB80A00695563 /* ContentView.swift */,
+				548DD5EA2E9FB80B00695563 /* Assets.xcassets */,
+				548DD5EC2E9FB80B00695563 /* Preview Content */,
+			);
+			path = "RunRunTimer Watch App Watch App";
+			sourceTree = "<group>";
+		};
+		548DD5EC2E9FB80B00695563 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				548DD5ED2E9FB80B00695563 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		548DD5F62E9FB80B00695563 /* RunRunTimer Watch App Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				548DD5F72E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppTests.swift */,
+			);
+			path = "RunRunTimer Watch App Watch AppTests";
+			sourceTree = "<group>";
+		};
+		548DD6002E9FB80B00695563 /* RunRunTimer Watch App Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				548DD6012E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITests.swift */,
+				548DD6032E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "RunRunTimer Watch App Watch AppUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		548DD58A2E9FB6EB00695563 /* RunRunTimer */ = {
+		548DD58A2E9FB6EB00695563 /* RunRunTimer (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 548DD5AF2E9FB6ED00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer" */;
+			buildConfigurationList = 548DD5AF2E9FB6ED00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer (iOS)" */;
 			buildPhases = (
 				548DD5872E9FB6EB00695563 /* Sources */,
 				548DD5882E9FB6EB00695563 /* Frameworks */,
@@ -142,9 +399,12 @@
 			);
 			dependencies = (
 			);
-			name = RunRunTimer;
+			name = "RunRunTimer (iOS)";
+			packageProductDependencies = (
+				548DD6192E9FBA8A00695563 /* RunRunCore */,
+			);
 			productName = RunRunTimer;
-			productReference = 548DD58B2E9FB6EB00695563 /* RunRunTimer.app */;
+			productReference = 548DD58B2E9FB6EB00695563 /* RunRunTimer (iOS).app */;
 			productType = "com.apple.product-type.application";
 		};
 		548DD59A2E9FB6ED00695563 /* RunRunTimerTests */ = {
@@ -183,6 +443,120 @@
 			productReference = 548DD5A52E9FB6ED00695563 /* RunRunTimerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		548DD5BB2E9FB80900695563 /* RunRunTimer Watch (watch app/bundle) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548DD6092E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch (watch app/bundle)" */;
+			buildPhases = (
+				548DD5B82E9FB80900695563 /* Sources */,
+				548DD5B92E9FB80900695563 /* Frameworks */,
+				548DD5BA2E9FB80900695563 /* Resources */,
+				548DD6082E9FB80B00695563 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				548DD5E42E9FB80A00695563 /* PBXTargetDependency */,
+			);
+			name = "RunRunTimer Watch (watch app/bundle)";
+			packageProductDependencies = (
+				548DD61B2E9FBB2200695563 /* RunRunCore */,
+			);
+			productName = "RunRunTimer Watch App";
+			productReference = 548DD5BC2E9FB80900695563 /* RunRunTimer Watch (watch app/bundle).app */;
+			productType = "com.apple.product-type.application";
+		};
+		548DD5CA2E9FB80A00695563 /* RunRunTimer Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548DD60C2E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch AppTests" */;
+			buildPhases = (
+				548DD5C72E9FB80A00695563 /* Sources */,
+				548DD5C82E9FB80A00695563 /* Frameworks */,
+				548DD5C92E9FB80A00695563 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				548DD5CD2E9FB80A00695563 /* PBXTargetDependency */,
+			);
+			name = "RunRunTimer Watch AppTests";
+			productName = "RunRunTimer Watch AppTests";
+			productReference = 548DD5CB2E9FB80A00695563 /* RunRunTimer Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		548DD5D42E9FB80A00695563 /* RunRunTimer Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548DD60F2E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch AppUITests" */;
+			buildPhases = (
+				548DD5D12E9FB80A00695563 /* Sources */,
+				548DD5D22E9FB80A00695563 /* Frameworks */,
+				548DD5D32E9FB80A00695563 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				548DD5D72E9FB80A00695563 /* PBXTargetDependency */,
+			);
+			name = "RunRunTimer Watch AppUITests";
+			productName = "RunRunTimer Watch AppUITests";
+			productReference = 548DD5D52E9FB80A00695563 /* RunRunTimer Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		548DD5E02E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548DD6052E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch Extension (watch extension)" */;
+			buildPhases = (
+				548DD5DD2E9FB80A00695563 /* Sources */,
+				548DD5DE2E9FB80A00695563 /* Frameworks */,
+				548DD5DF2E9FB80A00695563 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RunRunTimer Watch Extension (watch extension)";
+			packageProductDependencies = (
+				540A34922E9FC539000E9C3C /* RunRunCore */,
+			);
+			productName = "RunRunTimer Watch App Watch App";
+			productReference = 548DD5E12E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension).app */;
+			productType = "com.apple.product-type.application";
+		};
+		548DD5F22E9FB80B00695563 /* RunRunTimer Watch App Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548DD6122E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch App Watch AppTests" */;
+			buildPhases = (
+				548DD5EF2E9FB80B00695563 /* Sources */,
+				548DD5F02E9FB80B00695563 /* Frameworks */,
+				548DD5F12E9FB80B00695563 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				548DD5F52E9FB80B00695563 /* PBXTargetDependency */,
+			);
+			name = "RunRunTimer Watch App Watch AppTests";
+			productName = "RunRunTimer Watch App Watch AppTests";
+			productReference = 548DD5F32E9FB80B00695563 /* RunRunTimer Watch App Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		548DD5FC2E9FB80B00695563 /* RunRunTimer Watch App Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 548DD6152E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch App Watch AppUITests" */;
+			buildPhases = (
+				548DD5F92E9FB80B00695563 /* Sources */,
+				548DD5FA2E9FB80B00695563 /* Frameworks */,
+				548DD5FB2E9FB80B00695563 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				548DD5FF2E9FB80B00695563 /* PBXTargetDependency */,
+			);
+			name = "RunRunTimer Watch App Watch AppUITests";
+			productName = "RunRunTimer Watch App Watch AppUITests";
+			productReference = 548DD5FD2E9FB80B00695563 /* RunRunTimer Watch App Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -204,6 +578,28 @@
 						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 548DD58A2E9FB6EB00695563;
 					};
+					548DD5BB2E9FB80900695563 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					548DD5CA2E9FB80A00695563 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 548DD5BB2E9FB80900695563;
+					};
+					548DD5D42E9FB80A00695563 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 548DD5BB2E9FB80900695563;
+					};
+					548DD5E02E9FB80A00695563 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					548DD5F22E9FB80B00695563 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 548DD5E02E9FB80A00695563;
+					};
+					548DD5FC2E9FB80B00695563 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 548DD5E02E9FB80A00695563;
+					};
 				};
 			};
 			buildConfigurationList = 548DD5862E9FB6EB00695563 /* Build configuration list for PBXProject "RunRunTimer" */;
@@ -215,13 +611,22 @@
 				Base,
 			);
 			mainGroup = 548DD5822E9FB6EB00695563;
+			packageReferences = (
+				548DD6182E9FBA8A00695563 /* XCLocalSwiftPackageReference "../RunRunCore" */,
+			);
 			productRefGroup = 548DD58C2E9FB6EB00695563 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				548DD58A2E9FB6EB00695563 /* RunRunTimer */,
+				548DD58A2E9FB6EB00695563 /* RunRunTimer (iOS) */,
 				548DD59A2E9FB6ED00695563 /* RunRunTimerTests */,
 				548DD5A42E9FB6ED00695563 /* RunRunTimerUITests */,
+				548DD5BB2E9FB80900695563 /* RunRunTimer Watch (watch app/bundle) */,
+				548DD5CA2E9FB80A00695563 /* RunRunTimer Watch AppTests */,
+				548DD5D42E9FB80A00695563 /* RunRunTimer Watch AppUITests */,
+				548DD5E02E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension) */,
+				548DD5F22E9FB80B00695563 /* RunRunTimer Watch App Watch AppTests */,
+				548DD5FC2E9FB80B00695563 /* RunRunTimer Watch App Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +655,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		548DD5BA2E9FB80900695563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD5C62E9FB80A00695563 /* Preview Assets.xcassets in Resources */,
+				548DD5C32E9FB80A00695563 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5C92E9FB80A00695563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5D32E9FB80A00695563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5DF2E9FB80A00695563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD5EE2E9FB80B00695563 /* Preview Assets.xcassets in Resources */,
+				548DD5EB2E9FB80B00695563 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5F12E9FB80B00695563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5FB2E9FB80B00695563 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -257,8 +708,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540A349C2E9FCE45000E9C3C /* PreviewView.swift in Sources */,
+				540A349B2E9FCE45000E9C3C /* RunView.swift in Sources */,
+				540A349D2E9FCE45000E9C3C /* RunViewModel.swift in Sources */,
 				548DD5912E9FB6EB00695563 /* ContentView.swift in Sources */,
-				548DD58F2E9FB6EB00695563 /* RunRunTimerApp.swift in Sources */,
+				540A34A22E9FCE5B000E9C3C /* MainAppView.swift in Sources */,
+				540A349A2E9FCE45000E9C3C /* WatchSyncView.swift in Sources */,
+				540A349E2E9FCE45000E9C3C /* RunRunTimerApp.swift in Sources */,
+				540A349F2E9FCE45000E9C3C /* WorkoutLibraryView.swift in Sources */,
+				540A34A32E9FCE5B000E9C3C /* EditorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,18 +737,97 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		548DD5B82E9FB80900695563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD5C12E9FB80900695563 /* ContentView.swift in Sources */,
+				548DD5BF2E9FB80900695563 /* RunRunTimer_Watch_AppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5C72E9FB80A00695563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD5D02E9FB80A00695563 /* RunRunTimer_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5D12E9FB80A00695563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD5DC2E9FB80A00695563 /* RunRunTimer_Watch_AppUITestsLaunchTests.swift in Sources */,
+				548DD5DA2E9FB80A00695563 /* RunRunTimer_Watch_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5DD2E9FB80A00695563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540A34A72E9FCE95000E9C3C /* WatchRunView.swift in Sources */,
+				540A34A62E9FCE95000E9C3C /* WatchWorkoutListView.swift in Sources */,
+				548DD5E92E9FB80A00695563 /* ContentView.swift in Sources */,
+				548DD5E72E9FB80A00695563 /* RunRunTimer_Watch_AppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5EF2E9FB80B00695563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD5F82E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		548DD5F92E9FB80B00695563 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				548DD6042E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITestsLaunchTests.swift in Sources */,
+				548DD6022E9FB80B00695563 /* RunRunTimer_Watch_App_Watch_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		548DD59D2E9FB6ED00695563 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 548DD58A2E9FB6EB00695563 /* RunRunTimer */;
+			target = 548DD58A2E9FB6EB00695563 /* RunRunTimer (iOS) */;
 			targetProxy = 548DD59C2E9FB6ED00695563 /* PBXContainerItemProxy */;
 		};
 		548DD5A72E9FB6ED00695563 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 548DD58A2E9FB6EB00695563 /* RunRunTimer */;
+			target = 548DD58A2E9FB6EB00695563 /* RunRunTimer (iOS) */;
 			targetProxy = 548DD5A62E9FB6ED00695563 /* PBXContainerItemProxy */;
+		};
+		548DD5CD2E9FB80A00695563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 548DD5BB2E9FB80900695563 /* RunRunTimer Watch (watch app/bundle) */;
+			targetProxy = 548DD5CC2E9FB80A00695563 /* PBXContainerItemProxy */;
+		};
+		548DD5D72E9FB80A00695563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 548DD5BB2E9FB80900695563 /* RunRunTimer Watch (watch app/bundle) */;
+			targetProxy = 548DD5D62E9FB80A00695563 /* PBXContainerItemProxy */;
+		};
+		548DD5E42E9FB80A00695563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 548DD5E02E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension) */;
+			targetProxy = 548DD5E32E9FB80A00695563 /* PBXContainerItemProxy */;
+		};
+		548DD5F52E9FB80B00695563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 548DD5E02E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension) */;
+			targetProxy = 548DD5F42E9FB80B00695563 /* PBXContainerItemProxy */;
+		};
+		548DD5FF2E9FB80B00695563 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 548DD5E02E9FB80A00695563 /* RunRunTimer Watch Extension (watch extension) */;
+			targetProxy = 548DD5FE2E9FB80B00695563 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -355,6 +892,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
 			};
 			name = Debug;
 		};
@@ -411,6 +949,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
 			};
 			name = Release;
 		};
@@ -430,6 +969,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,6 +977,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bevemyr.RunRunTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,6 +1003,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +1011,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bevemyr.RunRunTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -488,7 +1037,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer (iOS).app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer (iOS)";
 			};
 			name = Debug;
 		};
@@ -508,7 +1057,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer (iOS).app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer (iOS)";
 			};
 			name = Release;
 		};
@@ -548,6 +1097,296 @@
 			};
 			name = Release;
 		};
+		548DD6062E9FB80B00695563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RunRunTimer Watch App Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "RunRunTimer Watch App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.bevemyr.RunRunTimer-Watch-App";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		548DD6072E9FB80B00695563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RunRunTimer Watch App Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "RunRunTimer Watch App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.bevemyr.RunRunTimer-Watch-App";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+		548DD60A2E9FB80B00695563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RunRunTimer Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "RunRunTimer Watch App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		548DD60B2E9FB80B00695563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RunRunTimer Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "RunRunTimer Watch App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		548DD60D2E9FB80B00695563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer Watch App";
+			};
+			name = Debug;
+		};
+		548DD60E2E9FB80B00695563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer Watch App";
+			};
+			name = Release;
+		};
+		548DD6102E9FB80B00695563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "RunRunTimer Watch App";
+			};
+			name = Debug;
+		};
+		548DD6112E9FB80B00695563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "RunRunTimer Watch App";
+			};
+			name = Release;
+		};
+		548DD6132E9FB80B00695563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer Watch Extension (watch extension).app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer Watch Extension (watch extension)";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		548DD6142E9FB80B00695563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RunRunTimer Watch Extension (watch extension).app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RunRunTimer Watch Extension (watch extension)";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
+		548DD6162E9FB80B00695563 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "RunRunTimer Watch App Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		548DD6172E9FB80B00695563 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R9W22HZP7P;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bevemyr.RunRunTimer-Watch-App-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "RunRunTimer Watch App Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -560,7 +1399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		548DD5AF2E9FB6ED00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer" */ = {
+		548DD5AF2E9FB6ED00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				548DD5B02E9FB6ED00695563 /* Debug */,
@@ -587,7 +1426,84 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		548DD6052E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch Extension (watch extension)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548DD6062E9FB80B00695563 /* Debug */,
+				548DD6072E9FB80B00695563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548DD6092E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch (watch app/bundle)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548DD60A2E9FB80B00695563 /* Debug */,
+				548DD60B2E9FB80B00695563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548DD60C2E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548DD60D2E9FB80B00695563 /* Debug */,
+				548DD60E2E9FB80B00695563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548DD60F2E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548DD6102E9FB80B00695563 /* Debug */,
+				548DD6112E9FB80B00695563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548DD6122E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch App Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548DD6132E9FB80B00695563 /* Debug */,
+				548DD6142E9FB80B00695563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		548DD6152E9FB80B00695563 /* Build configuration list for PBXNativeTarget "RunRunTimer Watch App Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				548DD6162E9FB80B00695563 /* Debug */,
+				548DD6172E9FB80B00695563 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		548DD6182E9FBA8A00695563 /* XCLocalSwiftPackageReference "../RunRunCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../RunRunCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		540A34922E9FC539000E9C3C /* RunRunCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 548DD6182E9FBA8A00695563 /* XCLocalSwiftPackageReference "../RunRunCore" */;
+			productName = RunRunCore;
+		};
+		548DD6192E9FBA8A00695563 /* RunRunCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RunRunCore;
+		};
+		548DD61B2E9FBB2200695563 /* RunRunCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RunRunCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 548DD5832E9FB6EB00695563 /* Project object */;
 }
