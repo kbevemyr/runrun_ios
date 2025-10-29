@@ -198,6 +198,18 @@ struct SaveWorkoutDialog: View {
 
 struct ListPreview: View {
 	let workout: Workout
+	
+	private func segmentColor(for type: SegmentType) -> Color {
+		switch type {
+		case .work:
+			return Color("WorkColor")
+		case .prepare:
+			return Color("PrepareColor")
+		case .rest:
+			return Color("RestColor")
+		}
+	}
+	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 8) {
 			Text("Totalt: \(workout.totals.totalSeconds)s, Intervall: \(workout.totals.totalIntervals)")
@@ -211,7 +223,7 @@ struct ListPreview: View {
 							// Kolumn 1: Type
 							Text(s.type.rawValue.capitalized)
 								.font(.body)
-								.foregroundColor(s.type == .work ? .primary : .secondary)
+								.foregroundColor(segmentColor(for: s.type))
 								.frame(width: 80, alignment: .leading)
 							
 							// Kolumn 2: Label

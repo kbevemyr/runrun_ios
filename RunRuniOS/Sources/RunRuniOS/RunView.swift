@@ -78,7 +78,7 @@ public struct RunView: View {
                             Text("\(vm.status.current.label ?? vm.status.current.type.rawValue.capitalized) \(timeString(vm.status.current.seconds))")
                                 .font(.title)
                                 .fontWeight(.bold)
-                                .foregroundColor(vm.status.current.type == .work ? .red : .blue)
+                                .foregroundColor(segmentColor(for: vm.status.current.type))
                         }
                         
                         Text("Segment \(segmentDisplayText)")
@@ -95,7 +95,7 @@ public struct RunView: View {
                                 Text("\(next.label ?? next.type.rawValue.capitalized) \(timeString(next.seconds))")
                                     .font(.title)
                                     .fontWeight(.light)
-                                    .foregroundColor(next.type == .work ? .red : .blue)
+                                    .foregroundColor(segmentColor(for: next.type))
 							}
 							.font(.headline)
 							.foregroundColor(.secondary)
@@ -169,6 +169,17 @@ public struct RunView: View {
 		let m = seconds / 60
 		let s = seconds % 60
 		return String(format: "%02d:%02d", m, s)
+	}
+	
+	private func segmentColor(for type: SegmentType) -> Color {
+		switch type {
+		case .work:
+			return Color("WorkColor")
+		case .prepare:
+			return Color("PrepareColor")
+		case .rest:
+			return Color("RestColor")
+		}
 	}
 	
 	private var currentIntervalNumber: Int {
