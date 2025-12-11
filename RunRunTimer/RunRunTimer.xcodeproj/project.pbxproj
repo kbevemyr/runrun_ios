@@ -20,6 +20,7 @@
 		540A34A72E9FCE95000E9C3C /* WatchRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34A52E9FCE95000E9C3C /* WatchRunView.swift */; };
 		540A34A92E9FD033000E9C3C /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540A34A82E9FD033000E9C3C /* WatchConnectivity.framework */; };
 		540A34AA2E9FD044000E9C3C /* WatchConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540A34A82E9FD033000E9C3C /* WatchConnectivity.framework */; };
+		540A34AE2EB4715E000E9C3C /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540A34AD2EB4715E000E9C3C /* LibraryView.swift */; };
 		548DD5912E9FB6EB00695563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548DD5902E9FB6EB00695563 /* ContentView.swift */; };
 		548DD5932E9FB6ED00695563 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5922E9FB6ED00695563 /* Assets.xcassets */; };
 		548DD5962E9FB6ED00695563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548DD5952E9FB6ED00695563 /* Preview Assets.xcassets */; };
@@ -123,6 +124,7 @@
 		540A34A42E9FCE95000E9C3C /* WatchWorkoutListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWorkoutListView.swift; sourceTree = "<group>"; };
 		540A34A52E9FCE95000E9C3C /* WatchRunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchRunView.swift; sourceTree = "<group>"; };
 		540A34A82E9FD033000E9C3C /* WatchConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchConnectivity.framework; path = System/Library/Frameworks/WatchConnectivity.framework; sourceTree = SDKROOT; };
+		540A34AD2EB4715E000E9C3C /* LibraryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		548DD58B2E9FB6EB00695563 /* RunRunTimer (iOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RunRunTimer (iOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		548DD5902E9FB6EB00695563 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		548DD5922E9FB6ED00695563 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		548DD58D2E9FB6EB00695563 /* RunRunTimer */ = {
 			isa = PBXGroup;
 			children = (
+				540A34AD2EB4715E000E9C3C /* LibraryView.swift */,
 				540A34A12E9FCE5B000E9C3C /* EditorView.swift */,
 				540A34A02E9FCE5B000E9C3C /* MainAppView.swift */,
 				540A34962E9FCE45000E9C3C /* PreviewView.swift */,
@@ -717,6 +720,7 @@
 				540A349E2E9FCE45000E9C3C /* RunRunTimerApp.swift in Sources */,
 				540A349F2E9FCE45000E9C3C /* WorkoutLibraryView.swift in Sources */,
 				540A34A32E9FCE5B000E9C3C /* EditorView.swift in Sources */,
+				540A34AE2EB4715E000E9C3C /* LibraryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +774,7 @@
 				540A34A72E9FCE95000E9C3C /* WatchRunView.swift in Sources */,
 				540A34A62E9FCE95000E9C3C /* WatchWorkoutListView.swift in Sources */,
 				548DD5E92E9FB80A00695563 /* ContentView.swift in Sources */,
+				540A34AE2EB4715E000E9C3C /* LibraryView.swift in Sources */,
 				548DD5E72E9FB80A00695563 /* RunRunTimer_Watch_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1497,10 +1502,12 @@
 		};
 		548DD6192E9FBA8A00695563 /* RunRunCore */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 548DD6182E9FBA8A00695563 /* XCLocalSwiftPackageReference "../RunRunCore" */;
 			productName = RunRunCore;
 		};
 		548DD61B2E9FBB2200695563 /* RunRunCore */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 548DD6182E9FBA8A00695563 /* XCLocalSwiftPackageReference "../RunRunCore" */;
 			productName = RunRunCore;
 		};
 /* End XCSwiftPackageProductDependency section */

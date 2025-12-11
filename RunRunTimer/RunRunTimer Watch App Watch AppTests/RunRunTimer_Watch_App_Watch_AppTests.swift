@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import RunRunTimer_Watch_App_Watch_App
+@testable import RunRunTimer_Watch_Extension__watch_extension_
 
 final class RunRunTimer_Watch_App_Watch_AppTests: XCTestCase {
 

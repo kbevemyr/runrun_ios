@@ -17,18 +17,21 @@ public struct MainAppView: View {
 					Label("Library", systemImage: "list.bullet")
 				}
 				.tag(0)
+			LibraryView()
+				.tabItem {
+					Label("ClaudLib", systemImage: "list")
+				}
+				.tag(1)
 			
 			EditorView()
 				.tabItem {
 					Label("Add", systemImage: "plus")
 				}
-				.tag(1)
 			
 			WatchSyncView()
 				.tabItem {
 					Label("Watch", systemImage: "applewatch")
 				}
-				.tag(2)
 		}
 		.onAppear {
 			// Aktivera WatchConnectivity vid start
