@@ -30,18 +30,25 @@ public struct RunView: View {
 		}
 		.padding()
 		.navigationTitle("Run Timer")
+		.toolbar {
+			ToolbarItem(placement: .navigationBarTrailing) {
+				Button("Reset") {
+					vm.restart()
+				}
+			}
+		}
 	}
 	
 	// MARK: - Done View
 	private func doneView(isLandscape: Bool) -> some View {
 		VStack(spacing: 20) {
-			Text("🎉")
+			Text("Done")
 				.font(.system(size: isLandscape ? 60 : 80))
 			Text("Workout Done!")
 				.font(.largeTitle)
 				.fontWeight(.bold)
 				.foregroundColor(.green)
-			Text("Alla \(vm.status.progress.intervalsDone) intervals are done in \(timeString(workout.totals.totalSeconds))")
+			Text("All \(vm.status.progress.intervalsDone) intervals are done in \(timeString(workout.totals.totalSeconds))")
 				.font(.headline)
 				.foregroundColor(.secondary)
 			
@@ -61,10 +68,13 @@ public struct RunView: View {
 	private func portraitLayout(geometry: GeometryProxy) -> some View {
 		VStack(spacing: 12) {
             // Main Timer with circular progress
+            statusCard
             timerSection
+            
             
             // Progress and Status
             progressSection
+            statusCard
 			
 			// Controls
 			controlsSection
@@ -94,9 +104,6 @@ public struct RunView: View {
                     HStack(spacing: 16) {
                         // Interval counter
                         statusCard
-                                        
-                        // Next segment
-                        nextSegmentCompactCard
                     }
                                     
                     // Upcoming segments
@@ -113,14 +120,8 @@ public struct RunView: View {
 	// MARK: - Progress Section
     private var progressSection: some View {
         VStack(spacing: 16) {
-            
-            // Next segment
-            nextSegmentCard
-            
             // Upcoming segments
             upcomingSegmentsList
-            
-            Spacer()
         }
         .frame(maxWidth: .infinity)
 	}
@@ -147,119 +148,50 @@ public struct RunView: View {
 	
 	// MARK: - Timer Section
 	private var timerSection: some View {
-		VStack(spacing: 16) {
+        VStack(spacing: 16) {
+            let _progress = Double(vm.status.current.left) / Double(vm.status.current.seconds)
             
-			// Circular progress with timer
-			ZStack {
-				Circle()
-					.stroke(Color.gray.opacity(0.2), lineWidth: 12)
-					.frame(width: 240, height: 240)
-				
-				let progress = Double(vm.status.current.left) / Double(vm.status.current.seconds)
-				Circle()
-					.trim(from: 0, to: CGFloat(progress))
-					.stroke(segmentColor(for: vm.status.current.type), style: StrokeStyle(lineWidth: 12, lineCap: .round))
-					.frame(width: 240, height: 240)
-					.rotationEffect(.degrees(-90))
-					.animation(.easeInOut, value: progress)
-				
-                VStack(spacing: 0) {
-                    Text(timeString(vm.status.current.left))
-                        .font(.system(size: 72, weight: .medium, design: .rounded))
-                        .monospacedDigit()
-                        .foregroundColor(.primary)
-                    Text(vm.status.current.label ?? vm.status.current.type.rawValue.capitalized)
-                        .font(.system(size: 36, weight: .bold))
-                        .foregroundColor(segmentColor(for: vm.status.current.type))
-                }
-
-			}
-		}
+            VStack(spacing: 0) {
+                Text(timeString(vm.status.current.left))
+                    .font(.system(size: 72, weight: .medium, design: .rounded))
+                    .monospacedDigit()
+                    .foregroundColor(.primary)
+                Text(vm.status.current.label ?? vm.status.current.type.rawValue.capitalized)
+                    .font(.system(size: 36, weight: .bold))
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(segmentColor(for: vm.status.current.type))
+        .cornerRadius(16)
 	}
 	
 	// MARK: - Status Card
     var statusCard: some View {
-        VStack(spacing: 8) {
+        HStack(spacing: 8) {
             Text("Status")
-                    .font(.caption2)
                     .fontWeight(.semibold)
-                    .foregroundColor(.secondary)
-            Text("\(currentIntervalNumber) av \(totalIntervals)")
+            Spacer()
             Text("\(timeString(workout.totals.totalSeconds - vm.status.progress.timeLeft)) / \(timeString(workout.totals.totalSeconds))")
-            // Segment counter badge
-            Text("Segment \(segmentDisplayText)")
+            Spacer()
+            Text("\(currentIntervalNumber) av \(totalIntervals)")
             }
             .font(.subheadline)
-            .foregroundColor(.secondary)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 20)
+            .padding()
             .background(Color.gray.opacity(0.1))
             .cornerRadius(16)
         }
     
-    // MARK: - Next Segment Card
-	private var nextSegmentCard: some View {
-        let nexti = vm.status.next
-        
-        return HStack(spacing: 16) {
-			VStack(alignment: .leading, spacing: 4) {
-				Text("Nästa")
-					.font(.caption)
-					.foregroundColor(.secondary)
-				if let next = vm.status.next {
-					Text(next.label ?? next.type.rawValue.capitalized)
-						.font(.title3)
-						.fontWeight(.semibold)
-				}
-			}
-			
-			Spacer()
-			
-			if let next = vm.status.next {
-				Text(timeString(next.seconds))
-					.font(.system(size: 32, weight: .semibold, design: .rounded))
-					//.foregroundColor(segmentColor(for: next.type))
-			}
-		}
-		.padding()
-		//.background(Color.gray.opacity(0.1))
-		.cornerRadius(16)
-	}
-    
-    var nextSegmentCompactCard: some View {
-            VStack(spacing: 8) {
-                Text("Nästa")
-                    .font(.caption2)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.secondary)
-                if let next = vm.status.next {
-                    Text(next.label ?? next.type.rawValue.capitalized)
-                        .font(.system(size: 28, weight: .bold))
-                        .foregroundColor(.red)
-                }
-                    
-                if let next = vm.status.next {
-                    Text(timeString(next.seconds))
-                        .font(.system(size: 24, weight: .semibold, design: .rounded))
-                        .foregroundColor(.yellow)
-                        .monospacedDigit()
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 20)
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(16)
-        }
 	
 	// MARK: - Upcoming Segments List
 	private var upcomingSegmentsList: some View {
 		VStack(alignment: .leading, spacing: 8) {
 			Text("Kommande")
-				.font(.caption)
-				.foregroundColor(.secondary)
+                .fontWeight(.semibold)
             ScrollView {
                 VStack(spacing: 8) {
-                    ForEach(Array(workout.segments.enumerated().dropFirst(vm.status.current.index + 1).prefix(3)), id: \.offset) { index, segment in
+                    ForEach(Array(workout.segments.enumerated().dropFirst(vm.status.current.index+1)), id: \.offset) { index, segment in
                         HStack {
                             Text(segment.label ?? segment.type.rawValue.capitalized)
                                 .font(.subheadline)
@@ -269,6 +201,7 @@ public struct RunView: View {
                                 .foregroundColor(.secondary)
                         }
                         .padding(.vertical, 4)
+                        .background(segmentColor(for: segment.type))
                     }
                 }
             }
@@ -280,57 +213,43 @@ public struct RunView: View {
 	
 	// MARK: - Controls Section
 	private var controlsSection: some View {
-		VStack(spacing: 20) {
-			// Main play/pause button
-			Button(action: {
-				if vm.isRunning {
-					vm.pause()
-				} else {
-					vm.start()
-				}
-			}) {
-				Image(systemName: vm.isRunning ? "pause.fill" : "play.fill")
-					.font(.system(size: 32))
-					.foregroundColor(.white)
-					.frame(width: 80, height: 80)
-					.background(Color.blue)
-					.clipShape(Circle())
-					.shadow(color: Color.blue.opacity(0.3), radius: 8, x: 0, y: 4)
-			}
-			
-			// Secondary controls
-			HStack(spacing: 32) {
-				Button(action: { vm.back() }) {
-					VStack(spacing: 4) {
-						Image(systemName: "backward.fill")
-							.font(.system(size: 24))
-						Text("Föregående")
-							.font(.caption2)
-					}
-					.foregroundColor(.blue)
-				}
-				
-				Button(action: { vm.restart() }) {
-					VStack(spacing: 4) {
-						Image(systemName: "arrow.clockwise")
-							.font(.system(size: 24))
-						Text("Starta om")
-							.font(.caption2)
-					}
-					.foregroundColor(.blue)
-				}
-				
-				Button(action: { vm.skip() }) {
-					VStack(spacing: 4) {
-						Image(systemName: "forward.fill")
-							.font(.system(size: 24))
-						Text("Hoppa över")
-							.font(.caption2)
-					}
-					.foregroundColor(.blue)
-				}
-			}
-		}
+        HStack(spacing: 32) {
+            Button(action: { vm.back() }) {
+                VStack(spacing: 4) {
+                    Image(systemName: "backward.fill")
+                        .font(.system(size: 24))
+                    Text("Föregående")
+                        .font(.caption2)
+                }
+                .foregroundColor(.accent)
+            }
+            
+            // Main play/pause button
+            Button(action: {
+                if vm.isRunning {
+                    vm.pause()
+                } else {
+                    vm.start()
+                }
+            }) {
+                Image(systemName: vm.isRunning ? "pause.fill" : "play.fill")
+                    .font(.system(size: 32))
+                    .foregroundColor(.white)
+                    .frame(width: 80, height: 80)
+                    .background(.accent)
+                    .clipShape(Circle())
+            }
+            
+            Button(action: { vm.skip() }) {
+                VStack(spacing: 4) {
+                    Image(systemName: "forward.fill")
+                        .font(.system(size: 24))
+                    Text("Hoppa över")
+                        .font(.caption2)
+                }
+                .foregroundColor(.accent)
+            }
+        }
 	}
 
 	// MARK: - Helper Functions

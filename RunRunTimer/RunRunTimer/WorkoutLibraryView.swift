@@ -19,7 +19,7 @@ public struct WorkoutLibraryView: View {
 					workoutListView
 				}
 			}
-			.navigationTitle("My Workouts")
+			.navigationTitle("My Timers")
 			.toolbar {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					Button {
@@ -140,13 +140,11 @@ struct WorkoutRowView: View {
 					Text(workout.title)
 						.font(.headline)
 					Text(workout.program)
-						.font(.caption)
-						.foregroundColor(.secondary)
-						.lineLimit(1)
+						//.font(.caption)
+						.lineLimit(2)
 					if !workout.notes.isEmpty {
 						Text(workout.notes)
 							.font(.caption)
-							.foregroundColor(.secondary)
 							.lineLimit(2)
 					}
 				}
@@ -154,19 +152,15 @@ struct WorkoutRowView: View {
 				Button(action: onRun) {
 					Image(systemName: "play.circle.fill")
 						.font(.title2)
-						.foregroundColor(.blue)
+						.foregroundColor(.accent)
 				}
 			}
 			
 			HStack {
 				if let totals = try? ProgramParser().parse(workout.program).totals {
 					Label("\(totals.totalIntervals) intervals", systemImage: "repeat")
-						.font(.caption)
-						.foregroundColor(.secondary)
 					Spacer()
 					Label(timeString(totals.totalSeconds), systemImage: "clock")
-						.font(.caption)
-						.foregroundColor(.secondary)
 				}
 			}
 			

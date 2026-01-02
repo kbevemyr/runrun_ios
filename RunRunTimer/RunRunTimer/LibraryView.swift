@@ -116,6 +116,12 @@ class LibraryViewModel {
         try storage.delete(id: workout.id)
         workouts.removeAll { $0.id == workout.id }
     }
+    
+    func updateWorkout(_ workout: SavedWorkout, newProgram: String) throws {
+        let parser = ProgramParser()
+        let updatedWorkout = try parser.parse(newProgram)
+        try storage.save(workout: updatedWorkout, title: workout.title, notes: workout.notes, author: workout.author)
+    }
 }
 
 enum FilterOption: String, CaseIterable {
@@ -142,6 +148,8 @@ struct LibraryView: View {
     @State private var editingWorkout: SavedWorkout?
     @State private var workoutToDelete: SavedWorkout?
     @State private var showingDeleteAlert = false
+    @State private var selectedWorkout: Workout?
+    @State private var showingRunView = false
     
     var body: some View {
         NavigationView {
@@ -163,7 +171,25 @@ struct LibraryView: View {
                 EditorView()
             }
             .sheet(item: $editingWorkout) { workout in
-                EditorView(program: workout.programText)
+                EditorView(program: workout.programText) { newProgram in
+                    applyEdit(workout: workout, newProgram: newProgram)
+                }
+            }
+            .fullScreenCover(isPresented: $showingRunView) {
+                if let workout = selectedWorkout {
+                    NavigationView {
+                        RunView(workout: workout)
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    Button("Done") {
+                                        showingRunView = false
+                                        selectedWorkout = nil
+                                    }
+                                }
+                            }
+                    }
+                }
             }
             .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
                 Button("Cancel", role: .cancel) { }
@@ -195,36 +221,58 @@ struct LibraryView: View {
     }
     
     private var workoutListView: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                // Stats Summary
+        List {
+            // Stats Summary
+            Section {
                 statsSection
-                
-                // Filter Chips
+            }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.clear)
+            
+            // Filter Chips
+            Section {
                 filterSection
-                
-                // Workout Cards
-                LazyVStack(spacing: 12) {
-                    ForEach(viewModel.filteredAndSortedWorkouts) { workout in
-                        WorkoutCard(
-                            workout: workout,
-                            isExpanded: viewModel.expandedWorkoutID == workout.id,
-                            onTap: {
-                                withAnimation(.spring(response: 0.3)) {
-                                    viewModel.expandedWorkoutID = viewModel.expandedWorkoutID == workout.id ? nil : workout.id
-                                }
-                            },
-                            onPlay: { startWorkout(workout) },
-                            onEdit: { editingWorkout = workout },
-                            onShare: { shareWorkout(workout) },
-                            onDelete: { confirmDelete(workout) }
-                        )
+            }
+            .listRowInsets(EdgeInsets())
+            .listRowBackground(Color.clear)
+            
+            // Workout Cards
+            Section {
+                ForEach(viewModel.filteredAndSortedWorkouts) { workout in
+                    WorkoutCard(
+                        workout: workout,
+                        isExpanded: viewModel.expandedWorkoutID == workout.id,
+                        onTap: {
+                            withAnimation(.spring(response: 0.3)) {
+                                viewModel.expandedWorkoutID = viewModel.expandedWorkoutID == workout.id ? nil : workout.id
+                            }
+                        },
+                        onPlay: { startWorkout(workout) },
+                        onEdit: { editingWorkout = workout },
+                        onShare: { shareWorkout(workout) },
+                        onDelete: { confirmDelete(workout) }
+                    )
+                    .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                    .listRowBackground(Color.clear)
+                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                        Button(role: .destructive) {
+                            confirmDelete(workout)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button {
+                            shareWorkout(workout)
+                        } label: {
+                            Label("Share", systemImage: "square.and.arrow.up")
+                        }
                     }
                 }
-                .padding(.horizontal)
             }
-            .padding(.vertical)
         }
+        .listStyle(.plain)
+        .scrollContentBackground(.hidden)
         .background(Color(.systemGroupedBackground))
     }
     
@@ -252,6 +300,7 @@ struct LibraryView: View {
             )
         }
         .padding(.horizontal)
+        .padding(.vertical, 8)
     }
     
     private var filterSection: some View {
@@ -270,6 +319,7 @@ struct LibraryView: View {
             }
             .padding(.horizontal)
         }
+        .padding(.vertical, 8)
     }
     
     @ToolbarContentBuilder
@@ -309,8 +359,12 @@ struct LibraryView: View {
     // MARK: - Actions
     
     private func startWorkout(_ workout: SavedWorkout) {
-        // Navigate to workout player
-        print("Starting workout: \(workout.title)")
+        // Ensure workout is set before showing the view
+        selectedWorkout = workout.workout
+        // Small delay to ensure state is updated
+        DispatchQueue.main.async {
+            showingRunView = true
+        }
     }
     
     private func shareWorkout(_ workout: SavedWorkout) {
@@ -328,6 +382,18 @@ struct LibraryView: View {
             try viewModel.deleteWorkout(workout)
         } catch {
             viewModel.errorMessage = "Failed to delete workout"
+        }
+    }
+    
+    private func applyEdit(workout: SavedWorkout, newProgram: String) {
+        do {
+            try viewModel.updateWorkout(workout, newProgram: newProgram)
+            editingWorkout = nil
+            Task {
+                await viewModel.loadWorkouts()
+            }
+        } catch {
+            viewModel.errorMessage = "Failed to update workout: \(error.localizedDescription)"
         }
     }
     
@@ -414,25 +480,11 @@ struct WorkoutCard: View {
             
             // Action buttons
             HStack(spacing: 24) {
-                ActionButton(icon: "info.circle", label: "Info") {
-                    onTap()
-                }
-                
-                ActionButton(icon: "square.and.arrow.up", label: "Share") {
-                    onShare()
-                }
-                
                 ActionButton(icon: "pencil", label: "Edit") {
                     onEdit()
                 }
                 
                 Spacer()
-                
-                Button(action: onDelete) {
-                    Image(systemName: "trash")
-                        .font(.title3)
-                        .foregroundColor(.red)
-                }
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 16)

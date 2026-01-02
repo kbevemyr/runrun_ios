@@ -17,9 +17,10 @@ public struct MainAppView: View {
 					Label("Library", systemImage: "list.bullet")
 				}
 				.tag(0)
+            
 			LibraryView()
 				.tabItem {
-					Label("ClaudLib", systemImage: "list")
+					Label("ClaudLib", systemImage: "list.bullet")
 				}
 				.tag(1)
 			

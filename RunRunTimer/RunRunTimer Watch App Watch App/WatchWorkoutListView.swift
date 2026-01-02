@@ -176,5 +176,104 @@ extension Workout: Identifiable {
 	}
 }
 
+// MARK: - Preview
+
+#Preview("Tom lista") {
+	WatchWorkoutListView()
+}
+
+#Preview("Med workouts") {
+	PreviewWorkoutListView()
+}
+
+// Preview helper view med mock-data
+private struct PreviewWorkoutListView: View {
+	@StateObject private var viewModel = PreviewWorkoutListViewModel()
+	@State private var selectedWorkout: Workout?
+	
+	var body: some View {
+		NavigationView {
+			Group {
+				if viewModel.workouts.isEmpty {
+					VStack(spacing: 12) {
+						Image(systemName: "figure.run.circle")
+							.font(.system(size: 40))
+							.foregroundColor(.secondary)
+						Text("Inga Workouts")
+							.font(.headline)
+						Text("Skapa i iOS-appen")
+							.font(.caption)
+							.foregroundColor(.secondary)
+							.multilineTextAlignment(.center)
+					}
+					.padding()
+				} else {
+					List {
+						ForEach(viewModel.workouts, id: \.id) { workoutExport in
+							Button {
+								selectWorkout(workoutExport)
+							} label: {
+								WatchWorkoutRowView(workout: workoutExport)
+							}
+							.listRowBackground(Color.clear)
+						}
+						
+						Button {
+							// Preview action
+						} label: {
+							Label("Synka med iPhone", systemImage: "arrow.triangle.2.circlepath")
+								.font(.caption)
+						}
+						.listRowBackground(Color.blue.opacity(0.2))
+					}
+				}
+			}
+			.navigationTitle("Workouts")
+		}
+		.sheet(item: $selectedWorkout) { workout in
+			WatchRunView(workout: workout)
+		}
+	}
+	
+	private func selectWorkout(_ export: WorkoutExport) {
+		do {
+			let workout = try ProgramParser().parse(export.program)
+			selectedWorkout = workout
+		} catch {
+			print("Kunde inte parsa workout: \(error)")
+		}
+	}
+}
+
+// Preview ViewModel med mock-data
+@MainActor
+private final class PreviewWorkoutListViewModel: ObservableObject {
+	@Published var workouts: [WorkoutExport] = []
+	
+	init() {
+		// Mock-data för preview
+		workouts = [
+			WorkoutExport(
+				workout: try! ProgramParser().parse("P10 (x5 W30 R30)"),
+				title: "HIIT Nybörjare",
+				notes: "Perfekt för att komma igång",
+				author: "user"
+			),
+			WorkoutExport(
+				workout: try! ProgramParser().parse("P10 (x8 W20 R10)"),
+				title: "Tabata",
+				notes: "Klassisk Tabata-struktur",
+				author: "user"
+			),
+			WorkoutExport(
+				workout: try! ProgramParser().parse("P10 (x4 W3m@VO2 R2m)"),
+				title: "VO2 Max Intervals",
+				notes: "Tuff träning",
+				author: "user"
+			)
+		]
+	}
+}
+
 #endif
 
