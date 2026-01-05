@@ -37,7 +37,7 @@ public struct WatchRunView: View {
                         .foregroundColor(.secondary)
                 }
                 
-                Text(timeString(vm.status.current.left))
+                Text(vm.status.current.left.timeString)
                     .font(.system(size: 48, weight: .bold, design: .rounded))
                     .monospacedDigit()
                 
@@ -59,11 +59,6 @@ public struct WatchRunView: View {
         }
 	}
 	
-	private func timeString(_ seconds: Int) -> String {
-		let m = seconds / 60
-		let s = seconds % 60
-		return String(format: "%02d:%02d", m, s)
-	}
 }
 
 public final class WatchRunViewModel: ObservableObject {

@@ -9,7 +9,7 @@ public struct PreviewView: View {
 	public var body: some View {
 		List {
 			Section("Summering") {
-				Text("Tid totalt: \(timeString(workout.totals.totalSeconds))")
+				Text("Tid totalt: \(workout.totals.totalSeconds.timeString)")
 				Text("Intervall: \(workout.totals.totalIntervals)")
 			}
 			Section("Segment") {
@@ -28,11 +28,6 @@ public struct PreviewView: View {
 		.navigationTitle("Förhandsvisning")
 	}
     
-    private func timeString(_ seconds: Int) -> String {
-        let m = seconds / 60
-        let s = seconds % 60
-        return String(format: "%02d:%02d", m, s)
-    }
 }
 
 #if DEBUG

@@ -24,15 +24,20 @@ public struct MainAppView: View {
 				}
 				.tag(1)
 			
-			EditorView()
+			EditorView(isTabMode: true, onWorkoutSaved: {
+				// Byt till ClaudLib-tabben när workout är sparad
+				selectedTab = 1
+			})
 				.tabItem {
 					Label("Add", systemImage: "plus")
 				}
+				.tag(2)
 			
 			WatchSyncView()
 				.tabItem {
 					Label("Watch", systemImage: "applewatch")
 				}
+				.tag(3)
 		}
 		.onAppear {
 			// Aktivera WatchConnectivity vid start

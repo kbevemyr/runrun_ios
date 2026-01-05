@@ -57,7 +57,7 @@ public struct RunView: View {
                             
                             HStack {
                                 Spacer()
-                                Text("Time \(timeString(workout.totals.totalSeconds-vm.status.progress.timeLeft)) /  \(timeString(workout.totals.totalSeconds))")
+                                Text("Time \((workout.totals.totalSeconds-vm.status.progress.timeLeft).timeString) /  \(workout.totals.totalSeconds.timeString)")
                             }
                             .font(.caption)
                             .foregroundColor(.secondary)
@@ -67,7 +67,7 @@ public struct RunView: View {
 					// Current Segment Info
 					VStack(spacing: 8) {
                         // Running time
-                        Text(timeString(vm.status.current.left))
+                        Text(vm.status.current.left.timeString)
                             .font(.system(size: 96, weight: .bold, design: .rounded))
                             .monospacedDigit()
                             .foregroundColor(vm.status.current.left <= 5 ? .red : .primary)
@@ -75,7 +75,7 @@ public struct RunView: View {
 						
                         // Prepare/Work/Rest/label
                         HStack {
-                            Text("\(vm.status.current.label ?? vm.status.current.type.rawValue.capitalized) \(timeString(vm.status.current.seconds))")
+                            Text("\(vm.status.current.label ?? vm.status.current.type.rawValue.capitalized) \(vm.status.current.seconds.timeString)")
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundColor(segmentColor(for: vm.status.current.type))
@@ -92,7 +92,7 @@ public struct RunView: View {
 							HStack {
 								Text("Next:")
                                     .font(.title)
-                                Text("\(next.label ?? next.type.rawValue.capitalized) \(timeString(next.seconds))")
+                                Text("\(next.label ?? next.type.rawValue.capitalized) \(next.seconds.timeString)")
                                     .font(.title)
                                     .fontWeight(.light)
                                     .foregroundColor(segmentColor(for: next.type))
@@ -165,11 +165,6 @@ public struct RunView: View {
 		.navigationTitle("Run Timer")
 	}
 
-	private func timeString(_ seconds: Int) -> String {
-		let m = seconds / 60
-		let s = seconds % 60
-		return String(format: "%02d:%02d", m, s)
-	}
 	
 	private func segmentColor(for type: SegmentType) -> Color {
 		switch type {

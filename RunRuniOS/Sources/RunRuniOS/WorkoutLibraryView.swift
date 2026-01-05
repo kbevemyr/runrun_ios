@@ -149,7 +149,7 @@ struct WorkoutRowView: View {
 						.font(.caption)
 						.foregroundColor(.secondary)
 					Spacer()
-					Label(timeString(totals.totalSeconds), systemImage: "clock")
+					Label(totals.totalSeconds.timeString, systemImage: "clock")
 						.font(.caption)
 						.foregroundColor(.secondary)
 				}
@@ -192,11 +192,6 @@ struct WorkoutRowView: View {
 		.padding(.vertical, 8)
 	}
 	
-	private func timeString(_ seconds: Int) -> String {
-		let m = seconds / 60
-		let s = seconds % 60
-		return String(format: "%dm %ds", m, s)
-	}
 	
 	private func formattedDate(_ isoString: String) -> String {
 		guard let date = ISO8601DateFormatter().date(from: isoString) else {

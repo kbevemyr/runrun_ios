@@ -99,3 +99,58 @@ public protocol Notifier: Sendable {
 	func notifyTransition(_ kind: TransitionKind)
 	func notifyPreAlert(secondsBefore: Int)
 }
+
+// MARK: - Saved Workout Model
+
+/// En sparad workout med metadata (titel, anteckningar, etc.)
+public struct SavedWorkout: Identifiable, Sendable {
+	public let id: String
+	public let title: String
+	public let notes: String
+	public let program: String
+	public let workout: Workout
+	public let createdAt: Date
+	public let author: String
+	
+	public var programText: String {
+		return program
+	}
+	
+	public init(
+		id: String,
+		title: String,
+		notes: String,
+		program: String,
+		workout: Workout,
+		createdAt: Date,
+		author: String
+	) {
+		self.id = id
+		self.title = title
+		self.notes = notes
+		self.program = program
+		self.workout = workout
+		self.createdAt = createdAt
+		self.author = author
+	}
+	
+	/// Skapar en SavedWorkout från en WorkoutExport
+	public init?(export: WorkoutExport, parser: ProgramParser = ProgramParser()) {
+		do {
+			let workout = try parser.parse(export.program)
+			let createdAt = ISO8601DateFormatter().date(from: export.createdAt) ?? Date()
+			
+			self.init(
+				id: export.id,
+				title: export.title,
+				notes: export.notes,
+				program: export.program,
+				workout: workout,
+				createdAt: createdAt,
+				author: export.author
+			)
+		} catch {
+			return nil
+		}
+	}
+}

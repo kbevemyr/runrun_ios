@@ -31,7 +31,7 @@ public struct RunView: View {
 		.padding()
 		.navigationTitle("Run Timer")
 		.toolbar {
-			ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .automatic) {
 				Button("Reset") {
 					vm.restart()
 				}
@@ -42,25 +42,20 @@ public struct RunView: View {
 	// MARK: - Done View
 	private func doneView(isLandscape: Bool) -> some View {
 		VStack(spacing: 20) {
-			Text("Done")
-				.font(.system(size: isLandscape ? 60 : 80))
 			Text("Workout Done!")
 				.font(.largeTitle)
 				.fontWeight(.bold)
-				.foregroundColor(.green)
-			Text("All \(vm.status.progress.intervalsDone) intervals are done in \(timeString(workout.totals.totalSeconds))")
+			Text("All \(vm.status.progress.intervalsDone) intervals are done in \(workout.totals.totalSeconds.timeString)")
 				.font(.headline)
 				.foregroundColor(.secondary)
 			
-			Button("Reset") {
+			Button("Done") {
 				vm.restart()
 			}
 			.buttonStyle(.borderedProminent)
 			.frame(maxWidth: .infinity)
 			.padding()
-			.background(Color.blue)
-			.foregroundColor(.white)
-			.cornerRadius(12)
+			.cornerRadius(16)
 		}
 	}
 	
@@ -68,9 +63,7 @@ public struct RunView: View {
 	private func portraitLayout(geometry: GeometryProxy) -> some View {
 		VStack(spacing: 12) {
             // Main Timer with circular progress
-            statusCard
             timerSection
-            
             
             // Progress and Status
             progressSection
@@ -101,13 +94,13 @@ public struct RunView: View {
 				
 				// Right side - Info
                 VStack(spacing: 16) {
+                    // Upcoming segments
+                    upcomingSegmentsList
+                    
                     HStack(spacing: 16) {
                         // Interval counter
                         statusCard
                     }
-                                    
-                    // Upcoming segments
-                    upcomingSegmentsList
                                     
                     Spacer()
                 }
@@ -149,10 +142,10 @@ public struct RunView: View {
 	// MARK: - Timer Section
 	private var timerSection: some View {
         VStack(spacing: 16) {
-            let _progress = Double(vm.status.current.left) / Double(vm.status.current.seconds)
+            //let _progress = Double(vm.status.current.left) / Double(vm.status.current.seconds)
             
             VStack(spacing: 0) {
-                Text(timeString(vm.status.current.left))
+                Text(vm.status.current.left.timeString)
                     .font(.system(size: 72, weight: .medium, design: .rounded))
                     .monospacedDigit()
                     .foregroundColor(.primary)
@@ -172,7 +165,7 @@ public struct RunView: View {
             Text("Status")
                     .fontWeight(.semibold)
             Spacer()
-            Text("\(timeString(workout.totals.totalSeconds - vm.status.progress.timeLeft)) / \(timeString(workout.totals.totalSeconds))")
+            Text("\((workout.totals.totalSeconds - vm.status.progress.timeLeft).timeString) / \(workout.totals.totalSeconds.timeString)")
             Spacer()
             Text("\(currentIntervalNumber) av \(totalIntervals)")
             }
@@ -186,29 +179,24 @@ public struct RunView: View {
 	
 	// MARK: - Upcoming Segments List
 	private var upcomingSegmentsList: some View {
-		VStack(alignment: .leading, spacing: 8) {
-			Text("Kommande")
-                .fontWeight(.semibold)
-            ScrollView {
-                VStack(spacing: 8) {
-                    ForEach(Array(workout.segments.enumerated().dropFirst(vm.status.current.index+1)), id: \.offset) { index, segment in
-                        HStack {
-                            Text(segment.label ?? segment.type.rawValue.capitalized)
-                                .font(.subheadline)
-                            Spacer()
-                            Text(timeString(segment.seconds))
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                        .padding(.vertical, 4)
-                        .background(segmentColor(for: segment.type))
+        ScrollView {
+            VStack(spacing: 8) {
+                ForEach(Array(workout.segments.enumerated().dropFirst(vm.status.current.index+1)), id: \.offset) { index, segment in
+                    HStack {
+                        Text(segment.label ?? segment.type.rawValue.capitalized)
+                            .font(.subheadline)
+                        Spacer()
+                        Text(segment.seconds.timeString)
+                            .font(.subheadline)
+                            .monospacedDigit()
+                            .foregroundColor(.secondary)
                     }
+                    .padding()
+                    .background(segmentColor(for: segment.type))
+                    .cornerRadius(16)
                 }
             }
-		}
-		.padding()
-		.background(Color.gray.opacity(0.1))
-		.cornerRadius(16)
+        }
 	}
 	
 	// MARK: - Controls Section
@@ -218,47 +206,31 @@ public struct RunView: View {
                 VStack(spacing: 4) {
                     Image(systemName: "backward.fill")
                         .font(.system(size: 24))
-                    Text("Föregående")
-                        .font(.caption2)
                 }
                 .foregroundColor(.accent)
             }
             
             // Main play/pause button
-            Button(action: {
+            PlayButton(isRunning: vm.isRunning, action:  {
                 if vm.isRunning {
                     vm.pause()
                 } else {
                     vm.start()
                 }
-            }) {
-                Image(systemName: vm.isRunning ? "pause.fill" : "play.fill")
-                    .font(.system(size: 32))
-                    .foregroundColor(.white)
-                    .frame(width: 80, height: 80)
-                    .background(.accent)
-                    .clipShape(Circle())
-            }
+            }, size: .large)
             
             Button(action: { vm.skip() }) {
                 VStack(spacing: 4) {
                     Image(systemName: "forward.fill")
                         .font(.system(size: 24))
-                    Text("Hoppa över")
-                        .font(.caption2)
                 }
                 .foregroundColor(.accent)
             }
         }
+        .padding()
 	}
 
 	// MARK: - Helper Functions
-	private func timeString(_ seconds: Int) -> String {
-		let m = seconds / 60
-		let s = seconds % 60
-		return String(format: "%02d:%02d", m, s)
-	}
-	
 	private func segmentColor(for type: SegmentType) -> Color {
 		switch type {
 		case .work:
@@ -320,7 +292,7 @@ public struct RunView: View {
 
 private var sampleWorkout: Workout {
 	let parser = ProgramParser()
-	return try! parser.parse("P5 (x12 W4@VO2 R3)")
+	return try! parser.parse("P5 (x4 W4@VO2 R3)")
 }
 #endif
 #endif

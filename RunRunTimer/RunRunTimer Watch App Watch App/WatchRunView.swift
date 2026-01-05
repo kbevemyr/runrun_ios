@@ -107,7 +107,7 @@ public struct WatchRunView: View {
 					Text("Tid")
 						.font(.caption)
 						.foregroundColor(.secondary)
-					Text("\(timeString(workout.totals.totalSeconds - vm.status.progress.timeLeft)) / \(timeString(workout.totals.totalSeconds))")
+					Text("\((workout.totals.totalSeconds - vm.status.progress.timeLeft).timeString) / \(workout.totals.totalSeconds.timeString)")
 						.font(.title3)
 						.fontWeight(.semibold)
 						.monospacedDigit()
@@ -146,7 +146,7 @@ public struct WatchRunView: View {
 		VStack(spacing: 12) {
 			Text("Done")
 				.font(.system(size: 32, weight: .bold))
-			Text("All \(vm.status.progress.intervalsDone) intervals are done in \(timeString(workout.totals.totalSeconds))")
+			Text("All \(vm.status.progress.intervalsDone) intervals are done in \(workout.totals.totalSeconds.timeString)")
 				.font(.caption)
 				.foregroundColor(.secondary)
 				.multilineTextAlignment(.center)
@@ -169,7 +169,7 @@ public struct WatchRunView: View {
 			}
 		}) {
 			VStack(spacing: 4) {
-				Text(timeString(vm.status.current.left))
+				Text(vm.status.current.left.timeString)
 					.font(.system(size: 56, weight: .medium, design: .rounded))
 					.monospacedDigit()
 					.foregroundColor(.primary)
@@ -196,7 +196,7 @@ public struct WatchRunView: View {
 							Text(segment.label ?? segment.type.rawValue.capitalized)
 								.font(.caption2)
 							Spacer()
-							Text(timeString(segment.seconds))
+							Text(segment.seconds.timeString)
 								.font(.caption2)
 								.foregroundColor(.secondary)
 						}
@@ -216,11 +216,6 @@ public struct WatchRunView: View {
 	}
 	
 	// MARK: - Helper Functions
-	private func timeString(_ seconds: Int) -> String {
-		let m = seconds / 60
-		let s = seconds % 60
-		return String(format: "%02d:%02d", m, s)
-	}
 	
 	private func segmentColor(for type: SegmentType) -> Color {
 		switch type {

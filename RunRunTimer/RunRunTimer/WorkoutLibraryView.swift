@@ -160,7 +160,7 @@ struct WorkoutRowView: View {
 				if let totals = try? ProgramParser().parse(workout.program).totals {
 					Label("\(totals.totalIntervals) intervals", systemImage: "repeat")
 					Spacer()
-					Label(timeString(totals.totalSeconds), systemImage: "clock")
+					Label(totals.totalSeconds.timeString, systemImage: "clock")
 				}
 			}
 			
@@ -227,12 +227,6 @@ struct WorkoutRowView: View {
 				Label("Details", systemImage: "info.circle")
 			}
 		}
-	}
-	
-	private func timeString(_ seconds: Int) -> String {
-		let m = seconds / 60
-		let s = seconds % 60
-		return String(format: "%dm %ds", m, s)
 	}
 	
 	private func formattedDate(_ isoString: String) -> String {

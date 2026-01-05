@@ -104,22 +104,13 @@ struct WatchWorkoutRowView: View {
 						.font(.caption2)
 						.foregroundColor(.secondary)
 					
-					Label(timeString(totals.totalSeconds), systemImage: "clock")
+					Label(totals.totalSeconds.timeString, systemImage: "clock")
 						.font(.caption2)
 						.foregroundColor(.secondary)
 				}
 			}
 		}
 		.padding(.vertical, 4)
-	}
-	
-	private func timeString(_ seconds: Int) -> String {
-		let m = seconds / 60
-		let s = seconds % 60
-		if m > 0 {
-			return "\(m)m \(s)s"
-		}
-		return "\(s)s"
 	}
 }
 

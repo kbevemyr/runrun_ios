@@ -8,20 +8,29 @@ import RunRunCore
 @Observable
 class EditorViewModel {
     var programText: String
+    var title: String
+    var notes: String
     var validationMessage: String = ""
     var previewWorkout: Workout?
     var isValidating: Bool = false
+    var isNewWorkout: Bool
     
     private let manager: ImportExportManager
     private let storage: WorkoutStorage
     private var debounceTask: Task<Void, Never>?
     
     init(
-        program: String = "W30 R10",
+        program: String = "",
+        title: String = "",
+        notes: String = "",
+        isNewWorkout: Bool = true,
         manager: ImportExportManager = ImportExportManager(),
         storage: WorkoutStorage = WorkoutStorage()
     ) {
         self.programText = program
+        self.title = title
+        self.notes = notes
+        self.isNewWorkout = isNewWorkout
         self.manager = manager
         self.storage = storage
         
@@ -31,6 +40,7 @@ class EditorViewModel {
         }
     }
     
+    @MainActor
     func updateProgram(_ newText: String) {
         programText = newText
         debouncedPreview()
@@ -50,6 +60,14 @@ class EditorViewModel {
         isValidating = true
         defer { isValidating = false }
         
+        // Om texten är tom, visa inget felmeddelande
+        let trimmed = programText.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmed.isEmpty {
+            previewWorkout = nil
+            validationMessage = ""
+            return
+        }
+        
         do {
             previewWorkout = try manager.importFromText(programText)
             validationMessage = "✓ Valid workout"
@@ -59,12 +77,16 @@ class EditorViewModel {
         }
     }
     
-    func saveToLibrary(title: String, notes: String) throws {
+    func saveToLibrary() throws {
         guard let workout = previewWorkout else {
             throw EditorError.noValidWorkout
         }
+        guard !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            throw EditorError.emptyTitle
+        }
         try storage.save(workout: workout, title: title, notes: notes, author: "user")
         validationMessage = "✓ Saved to library"
+        isNewWorkout = false
     }
     
     private func userFriendlyError(_ error: Error) -> String {
@@ -84,11 +106,14 @@ class EditorViewModel {
 
 enum EditorError: LocalizedError {
     case noValidWorkout
+    case emptyTitle
     
     var errorDescription: String? {
         switch self {
         case .noValidWorkout:
             return "No valid workout to save"
+        case .emptyTitle:
+            return "Title cannot be empty"
         }
     }
 }
@@ -97,23 +122,47 @@ enum EditorError: LocalizedError {
 
 public struct EditorView: View {
     @State private var viewModel: EditorViewModel
-    @State private var showingSaveDialog = false
-    @State private var saveTitle = ""
-    @State private var saveNotes = ""
     @State private var textEditHistory: [String] = []
     @State private var historyIndex: Int = -1
+    @Environment(\.dismiss) var dismiss
     private let onProgramUpdated: ((String) -> Void)?
+    private let onWorkoutSaved: (() -> Void)?
+    private let isTabMode: Bool
     
-    public init(program: String = "W30 R10", onProgramUpdated: ((String) -> Void)? = nil) {
-        self._viewModel = State(initialValue: EditorViewModel(program: program))
+    /// Skapar en EditorView med ett program
+    public init(program: String = "", isTabMode: Bool = false, onProgramUpdated: ((String) -> Void)? = nil, onWorkoutSaved: (() -> Void)? = nil) {
+        self._viewModel = State(initialValue: EditorViewModel(program: program, isNewWorkout: true))
+        self.isTabMode = isTabMode
         self.onProgramUpdated = onProgramUpdated
+        self.onWorkoutSaved = onWorkoutSaved
     }
+    
+    /// Skapar en EditorView för att redigera en sparad workout
+    public init(savedWorkout: SavedWorkout, isTabMode: Bool = false, onProgramUpdated: ((String) -> Void)? = nil, onWorkoutSaved: (() -> Void)? = nil) {
+        self._viewModel = State(initialValue: EditorViewModel(program: savedWorkout.program, title: savedWorkout.title, notes: savedWorkout.notes, isNewWorkout: false))
+        self.isTabMode = isTabMode
+        self.onProgramUpdated = onProgramUpdated
+        self.onWorkoutSaved = onWorkoutSaved
+    }
+    
     
     public var body: some View {
         NavigationView {
             VStack(spacing: 0) {
                 // Editor Section
                 VStack(spacing: 12) {
+                    // Title and Notes Fields
+                    VStack(spacing: 8) {
+                        TextField("Workout Title", text: $viewModel.title)
+                            .font(.headline)
+                            .textFieldStyle(.roundedBorder)
+                        
+                        TextField("Notes (optional)", text: $viewModel.notes, axis: .vertical)
+                            .font(.subheadline)
+                            .textFieldStyle(.roundedBorder)
+                            .lineLimit(2...4)
+                    }
+                    
                     // Quick Insert Toolbar
                     QuickInsertToolbar { template in
                         insertTemplate(template)
@@ -149,7 +198,7 @@ public struct EditorView: View {
                             .stroke(borderColor, lineWidth: 1.5)
                     )
                     
-                    // Validation Status & Actions
+                    // Validation Status
                     HStack(spacing: 12) {
                         if !viewModel.validationMessage.isEmpty {
                             Label(viewModel.validationMessage, systemImage: validationIcon)
@@ -158,22 +207,6 @@ public struct EditorView: View {
                         }
                         
                         Spacer()
-                        
-                        if onProgramUpdated != nil {
-                            Button("Apply") {
-                                applyProgram()
-                            }
-                            .buttonStyle(.bordered)
-                            .disabled(viewModel.previewWorkout == nil)
-                        }
-                        
-                        Button {
-                            showingSaveDialog = true
-                        } label: {
-                            Label("Save", systemImage: "square.and.arrow.down")
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .disabled(viewModel.previewWorkout == nil)
                     }
                 }
                 .padding()
@@ -194,13 +227,17 @@ public struct EditorView: View {
             }
             .navigationTitle("Workout Editor")
             .navigationBarTitleDisplayMode(.inline)
-            .sheet(isPresented: $showingSaveDialog) {
-                SaveWorkoutDialog(
-                    programText: viewModel.programText,
-                    initialTitle: saveTitle,
-                    initialNotes: saveNotes
-                ) { title, notes in
-                    saveToLibrary(title: title, notes: notes)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        handleCancel()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        saveAndDismiss()
+                    }
+                    .disabled(viewModel.previewWorkout == nil || viewModel.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
         }
@@ -249,25 +286,47 @@ public struct EditorView: View {
     private func insertTemplate(_ template: String) {
         addToHistory(viewModel.programText)
         
+        let newText: String
         if viewModel.programText.isEmpty {
-            viewModel.updateProgram(template)
+            newText = template
         } else {
-            viewModel.updateProgram(viewModel.programText + " " + template)
+            newText = viewModel.programText + " " + template
+        }
+        
+        // Säkerställ att uppdateringen sker på huvudtråden
+        Task { @MainActor in
+            viewModel.updateProgram(newText)
         }
     }
     
-    private func applyProgram() {
-        if viewModel.previewWorkout != nil {
-            onProgramUpdated?(viewModel.programText)
-            viewModel.validationMessage = "✓ Applied"
+    private func handleCancel() {
+        if isTabMode {
+            // Om editorn är en tab, rensa innehållet istället för att stänga
+            clearEditor()
+        } else {
+            // Om editorn är en sheet, stäng den
+            dismiss()
         }
     }
     
-    private func saveToLibrary(title: String, notes: String) {
+    private func clearEditor() {
+        // Rensa allt innehåll när editorn är en tab
+        viewModel = EditorViewModel(program: "", isNewWorkout: true)
+        textEditHistory = []
+        historyIndex = -1
+    }
+    
+    private func saveAndDismiss() {
         do {
-            try viewModel.saveToLibrary(title: title, notes: notes)
-            saveTitle = title
-            saveNotes = notes
+            try viewModel.saveToLibrary()
+            onWorkoutSaved?()
+            if isTabMode {
+                // Om editorn är en tab, rensa innehållet efter sparning
+                clearEditor()
+            } else {
+                // Om editorn är en sheet, stäng den
+                dismiss()
+            }
         } catch {
             viewModel.validationMessage = "⚠️ Error saving: \(error.localizedDescription)"
         }
@@ -282,8 +341,30 @@ struct QuickInsertToolbar: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                QuickInsertButton(title: "Interval", icon: "repeat") {
-                    onInsert("(x3 W45@work R15@rest)")
+                Menu {
+                    Button("Tabata (20s/10s × 8)") {
+                        onInsert("P10 (x8 W20@work R10@rest)")
+                    }
+                    Button("EMOM × 10") {
+                        onInsert("P10 (x10 W50@work R10@rest)")
+                    }
+                    Button("Pyramid") {
+                        onInsert("P10 (W20 R10 W30 R10 W40 R10 W30 R10 W20)")
+                    }
+                    Button("45/15 × 8") {
+                        onInsert("P10 (x8 W45@work R15@rest)")
+                    }
+                    Button("60/30 × 8") {
+                        onInsert("P10 (x8 W60@work R30@rest)")
+                    }
+                } label: {
+                    Label("Interval", systemImage: "repeat")
+                        .font(.caption)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(Color.accentColor.opacity(0.15))
+                        .foregroundColor(.accentColor)
+                        .cornerRadius(8)
                 }
                 
                 QuickInsertButton(title: "Prepare", icon: "figure.run") {
@@ -298,28 +379,6 @@ struct QuickInsertToolbar: View {
                     onInsert("R15@rest")
                 }
                 
-                Menu {
-                    Button("Tabata (20s/10s × 8)") {
-                        onInsert("P10 (x8 W20@work R10@rest)")
-                    }
-                    Button("EMOM × 10") {
-                        onInsert("(x10 W50@work R10@rest)")
-                    }
-                    Button("Pyramid") {
-                        onInsert("P10 (W20 R10 W30 R10 W40 R10 W30 R10 W20)")
-                    }
-                    Button("45/15 × 8") {
-                        onInsert("P10 (x8 W45@work R15@rest)")
-                    }
-                } label: {
-                    Label("Templates", systemImage: "doc.on.doc.fill")
-                        .font(.caption)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Color.accentColor.opacity(0.15))
-                        .foregroundColor(.accentColor)
-                        .cornerRadius(8)
-                }
             }
             .padding(.horizontal, 4)
         }
@@ -356,7 +415,7 @@ struct WorkoutPreview: View {
             HStack(spacing: 16) {
                 StatBadge(
                     icon: "clock.fill",
-                    value: timeString(workout.totals.totalSeconds),
+                    value: workout.totals.totalSeconds.timeString,
                     label: "Total Time"
                 )
                 StatBadge(
@@ -364,7 +423,6 @@ struct WorkoutPreview: View {
                     value: "\(workout.totals.totalIntervals)",
                     label: "Intervals"
                 )
-                Spacer()
             }
             .padding(.horizontal)
             .padding(.top, 8)
@@ -384,11 +442,6 @@ struct WorkoutPreview: View {
         .background(Color(.systemGroupedBackground))
     }
     
-    private func timeString(_ seconds: Int) -> String {
-        let m = seconds / 60
-        let s = seconds % 60
-        return String(format: "%d:%02d", m, s)
-    }
 }
 
 struct StatBadge: View {
@@ -422,41 +475,20 @@ struct SegmentRow: View {
             RoundedRectangle(cornerRadius: 2)
                 .fill(segmentColor)
                 .frame(width: 4, height: 32)
-            
-            // Type with icon
-            HStack(spacing: 6) {
-                Image(systemName: segmentIcon)
-                    .font(.caption)
-                    .foregroundColor(segmentColor)
+            VStack(alignment: .leading) {
                 Text(segment.type.rawValue.capitalized)
                     .font(.subheadline.weight(.medium))
                     .foregroundColor(.primary)
-            }
-            .frame(width: 90, alignment: .leading)
-            
-            // Label badge
-            if let label = segment.label {
-                Text(label)
-                    .font(.caption2)
-                    .foregroundColor(.secondary)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 3)
-                    .background(segmentColor.opacity(0.12))
-                    .cornerRadius(6)
+                if let label = segment.label { Text(label).foregroundColor(.secondary) }
             }
             
             Spacer()
             
             // Duration
-            Text(formatDuration(segment.seconds))
+            Text(segment.seconds.formatDuration)
                 .font(.body.monospacedDigit())
                 .fontWeight(.semibold)
                 .foregroundColor(.primary)
-            
-            Spacer()
-            
-            // Label
-            Text(segment.label ?? "default")
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
@@ -474,84 +506,13 @@ struct SegmentRow: View {
         }
     }
     
-    private var segmentIcon: String {
-        switch segment.type {
-        case .work: return "flame.fill"
-        case .prepare: return "figure.run"
-        case .rest: return "pause.fill"
-        }
-    }
-    
-    private func formatDuration(_ seconds: Int) -> String {
-        if seconds < 60 {
-            return "\(seconds)s"
-        } else {
-            let m = seconds / 60
-            let s = seconds % 60
-            return s > 0 ? "\(m)m \(s)s" : "\(m)m"
-        }
-    }
     
     private var accessibilityDescription: String {
-        var desc = "\(segment.type.rawValue) segment, \(formatDuration(segment.seconds))"
+        var desc = "\(segment.type.rawValue) segment, \(segment.seconds.formatDuration)"
         if let label = segment.label {
             desc += ", labeled as \(label)"
         }
         return desc
-    }
-}
-
-// MARK: - Save Workout Dialog
-
-struct SaveWorkoutDialog: View {
-    @Environment(\.dismiss) var dismiss
-    @State private var title: String
-    @State private var notes: String
-    let programText: String
-    let onSave: (String, String) -> Void
-    
-    init(programText: String, initialTitle: String, initialNotes: String, onSave: @escaping (String, String) -> Void) {
-        self.programText = programText
-        self._title = State(initialValue: initialTitle)
-        self._notes = State(initialValue: initialNotes)
-        self.onSave = onSave
-    }
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                Section("Workout Title") {
-                    TextField("Enter title", text: $title)
-                }
-                
-                Section("Notes (optional)") {
-                    TextEditor(text: $notes)
-                        .frame(minHeight: 80)
-                }
-                
-                Section("Program") {
-                    Text(programText)
-                        .font(.system(.body, design: .monospaced))
-                        .foregroundColor(.secondary)
-                }
-            }
-            .navigationTitle("Save Workout")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        onSave(title, notes)
-                        dismiss()
-                    }
-                    .disabled(title.isEmpty)
-                }
-            }
-        }
     }
 }
 
@@ -563,7 +524,11 @@ struct SaveWorkoutDialog: View {
 }
 
 #Preview("Complex Workout") {
-    EditorView(program: "P10 (x3 (x3 W60 R20 W40 R20 W20) R120@restset)")
+    EditorView(program: "P10 (x3 (W60 R20 W40 R20 W20) R120@restset)")
+}
+
+#Preview("Add new") {
+    EditorView()
 }
 #endif
 #endif

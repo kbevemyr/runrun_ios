@@ -79,22 +79,12 @@ class LibraryViewModel {
         do {
             let exports = try storage.loadAll()
             let converted: [SavedWorkout] = exports.compactMap { export in
-                do {
-                    let workout = try parser.parse(export.program)
-                    let createdAt = ISO8601DateFormatter().date(from: export.createdAt) ?? Date()
-                    
-                    return SavedWorkout(
-                        id: export.id,
-                        title: export.title,
-                        notes: export.notes,
-                        program: export.program,
-                        workout: workout,
-                        createdAt: createdAt,
-                        author: export.author
-                    )
-                } catch {
+                // Använd den nya initialiseringen från WorkoutExport
+                if let savedWorkout = SavedWorkout(export: export, parser: parser) {
+                    return savedWorkout
+                } else {
                     // Skip workouts that can't be parsed
-                    print("Warning: Could not parse workout '\(export.title)': \(error)")
+                    print("Warning: Could not parse workout '\(export.title)'")
                     return nil
                 }
             }
@@ -146,10 +136,10 @@ struct LibraryView: View {
     @State private var viewModel = LibraryViewModel()
     @State private var showingEditor = false
     @State private var editingWorkout: SavedWorkout?
+    @State private var copyingWorkout: SavedWorkout?
     @State private var workoutToDelete: SavedWorkout?
     @State private var showingDeleteAlert = false
-    @State private var selectedWorkout: Workout?
-    @State private var showingRunView = false
+    @State private var selectedWorkout: SavedWorkout?
     
     var body: some View {
         NavigationView {
@@ -168,27 +158,37 @@ struct LibraryView: View {
             }
             .searchable(text: $viewModel.searchText, prompt: "Search workouts")
             .sheet(isPresented: $showingEditor) {
-                EditorView()
+                EditorView(onWorkoutSaved: {
+                    Task {
+                        await viewModel.loadWorkouts()
+                    }
+                })
             }
             .sheet(item: $editingWorkout) { workout in
-                EditorView(program: workout.programText) { newProgram in
-                    applyEdit(workout: workout, newProgram: newProgram)
-                }
+                EditorView(savedWorkout: workout, onWorkoutSaved: {
+                    Task {
+                        await viewModel.loadWorkouts()
+                    }
+                })
             }
-            .fullScreenCover(isPresented: $showingRunView) {
-                if let workout = selectedWorkout {
-                    NavigationView {
-                        RunView(workout: workout)
-                            .navigationBarTitleDisplayMode(.inline)
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    Button("Done") {
-                                        showingRunView = false
-                                        selectedWorkout = nil
-                                    }
+            .sheet(item: $copyingWorkout) { workout in
+                EditorView(savedWorkout: workout, onWorkoutSaved: {
+                    Task {
+                        await viewModel.loadWorkouts()
+                    }
+                })
+            }
+            .sheet(item: $selectedWorkout) { savedWorkout in
+                NavigationView {
+                    RunView(workout: savedWorkout.workout)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar {
+                            ToolbarItem(placement: .automatic) {
+                                Button("Done") {
+                                    selectedWorkout = nil
                                 }
                             }
-                    }
+                        }
                 }
             }
             .alert("Delete Workout", isPresented: $showingDeleteAlert, presenting: workoutToDelete) { workout in
@@ -222,12 +222,6 @@ struct LibraryView: View {
     
     private var workoutListView: some View {
         List {
-            // Stats Summary
-            Section {
-                statsSection
-            }
-            .listRowInsets(EdgeInsets())
-            .listRowBackground(Color.clear)
             
             // Filter Chips
             Section {
@@ -249,6 +243,7 @@ struct LibraryView: View {
                         },
                         onPlay: { startWorkout(workout) },
                         onEdit: { editingWorkout = workout },
+                        onCopy: { copyWorkout(workout) },
                         onShare: { shareWorkout(workout) },
                         onDelete: { confirmDelete(workout) }
                     )
@@ -274,33 +269,6 @@ struct LibraryView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .background(Color(.systemGroupedBackground))
-    }
-    
-    private var statsSection: some View {
-        HStack(spacing: 12) {
-            StatCard(
-                value: "\(viewModel.workouts.count)",
-                label: "Workouts",
-                icon: "list.bullet.rectangle.fill",
-                color: .blue
-            )
-            
-            StatCard(
-                value: formatTotalTime(viewModel.totalWorkoutTime),
-                label: "Total Time",
-                icon: "clock.fill",
-                color: .orange
-            )
-            
-            StatCard(
-                value: "\(viewModel.totalIntervals)",
-                label: "Intervals",
-                icon: "repeat.circle.fill",
-                color: .green
-            )
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
     }
     
     private var filterSection: some View {
@@ -359,12 +327,22 @@ struct LibraryView: View {
     // MARK: - Actions
     
     private func startWorkout(_ workout: SavedWorkout) {
-        // Ensure workout is set before showing the view
-        selectedWorkout = workout.workout
-        // Small delay to ensure state is updated
-        DispatchQueue.main.async {
-            showingRunView = true
-        }
+        selectedWorkout = workout
+    }
+    
+    private func copyWorkout(_ workout: SavedWorkout) {
+        // Skapa en kopia med nytt namn - använd ett unikt ID och nytt datum
+        // Editorn kommer att behandla detta som en ny workout
+        let copiedWorkout = SavedWorkout(
+            id: UUID().uuidString,
+            title: "\(workout.title) Copy",
+            notes: workout.notes,
+            program: workout.program,
+            workout: workout.workout,
+            createdAt: Date(),
+            author: workout.author
+        )
+        copyingWorkout = copiedWorkout
     }
     
     private func shareWorkout(_ workout: SavedWorkout) {
@@ -382,18 +360,6 @@ struct LibraryView: View {
             try viewModel.deleteWorkout(workout)
         } catch {
             viewModel.errorMessage = "Failed to delete workout"
-        }
-    }
-    
-    private func applyEdit(workout: SavedWorkout, newProgram: String) {
-        do {
-            try viewModel.updateWorkout(workout, newProgram: newProgram)
-            editingWorkout = nil
-            Task {
-                await viewModel.loadWorkouts()
-            }
-        } catch {
-            viewModel.errorMessage = "Failed to update workout: \(error.localizedDescription)"
         }
     }
     
@@ -417,6 +383,7 @@ struct WorkoutCard: View {
     let onTap: () -> Void
     let onPlay: () -> Void
     let onEdit: () -> Void
+    let onCopy: () -> Void
     let onShare: () -> Void
     let onDelete: () -> Void
     
@@ -447,11 +414,11 @@ struct WorkoutCard: View {
                     HStack(spacing: 16) {
                         Label("\(workout.workout.totals.totalIntervals)", systemImage: "repeat.circle.fill")
                             .font(.subheadline)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.accentColor)
                         
-                        Label(formatDuration(workout.workout.totals.totalSeconds), systemImage: "clock.fill")
+                        Label(workout.workout.totals.totalSeconds.formatDuration, systemImage: "clock.fill")
                             .font(.subheadline)
-                            .foregroundColor(.orange)
+                            .foregroundColor(.accentColor)
                     }
                     
                     // Workout composition bar
@@ -462,32 +429,9 @@ struct WorkoutCard: View {
                 Spacer()
                 
                 // Play button
-                Button(action: onPlay) {
-                    ZStack {
-                        Circle()
-                            .fill(Color.blue)
-                            .frame(width: 56, height: 56)
-                        
-                        Image(systemName: "play.fill")
-                            .font(.title3)
-                            .foregroundColor(.white)
-                            .offset(x: 2) // Optical centering
-                    }
-                }
-                .buttonStyle(.plain)
+                PlayButton(action: onPlay, size: .small)
             }
             .padding(16)
-            
-            // Action buttons
-            HStack(spacing: 24) {
-                ActionButton(icon: "pencil", label: "Edit") {
-                    onEdit()
-                }
-                
-                Spacer()
-            }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 16)
         }
         .contentShape(Rectangle())
         .onTapGesture(perform: onTap)
@@ -498,47 +442,53 @@ struct WorkoutCard: View {
             Divider()
                 .padding(.horizontal, 16)
             
-            VStack(alignment: .leading, spacing: 8) {
-                DetailRow(icon: "calendar", text: formatDate(workout.createdAt))
-                
-                if !workout.notes.isEmpty {
-                    DetailRow(icon: "note.text", text: workout.notes)
-                }
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        Image(systemName: "doc.text")
-                            .foregroundColor(.secondary)
-                            .frame(width: 20)
-                        Text("Program")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+            Text(workout.programText)
+                .font(.system(.caption, design: .monospaced))
+                .foregroundColor(.primary)
+                .padding(8)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color(.tertiarySystemGroupedBackground))
+                .cornerRadius(6)
+            
+            HStack() {
+                VStack(alignment: .leading, spacing: 8) {
+                    DetailRow(icon: "calendar", text: formatDate(workout.createdAt))
+                    
+                    if !workout.notes.isEmpty {
+                        DetailRow(icon: "note.text", text: workout.notes)
                     }
                     
-                    Text(workout.programText)
-                        .font(.system(.caption, design: .monospaced))
-                        .foregroundColor(.primary)
-                        .padding(8)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color(.tertiarySystemGroupedBackground))
-                        .cornerRadius(6)
+                    VStack(alignment: .leading, spacing: 4) {
+                        HStack {
+                            Image(systemName: "doc.text")
+                                .foregroundColor(.secondary)
+                                .frame(width: 20)
+                            Text("Program")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
+                //.padding(.horizontal, 16)
+                .padding(.bottom, 16)
+                
+                Spacer()
+                
+                ActionButton(icon: "pencil", label: nil) {
+                    onEdit()
+                }
+                
+                ActionButton(icon: "doc.on.doc", label: nil) {
+                    onCopy()
                 }
             }
             .padding(.horizontal, 16)
-            .padding(.bottom, 16)
+            
+
         }
         .transition(.opacity.combined(with: .move(edge: .top)))
     }
     
-    private func formatDuration(_ seconds: Int) -> String {
-        let m = seconds / 60
-        let s = seconds % 60
-        if m > 0 {
-            return s > 0 ? "\(m)m \(s)s" : "\(m)m"
-        } else {
-            return "\(s)s"
-        }
-    }
     
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
@@ -550,32 +500,6 @@ struct WorkoutCard: View {
 
 // MARK: - Supporting Views
 
-struct StatCard: View {
-    let value: String
-    let label: String
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack(spacing: 4) {
-                Image(systemName: icon)
-                    .font(.caption)
-                Text(value)
-                    .font(.title3.bold())
-            }
-            .foregroundColor(color)
-            
-            Text(label)
-                .font(.caption2)
-                .foregroundColor(.secondary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(12)
-        .background(Color(.secondarySystemGroupedBackground))
-        .cornerRadius(12)
-    }
-}
 
 struct FilterChip: View {
     let title: String
@@ -598,19 +522,24 @@ struct FilterChip: View {
 
 struct ActionButton: View {
     let icon: String
-    let label: String
+    let label: String?
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 4) {
+            if let label = label {
+                VStack(spacing: 4) {
+                    Image(systemName: icon)
+                        .font(.title3)
+                    Text(label)
+                        .font(.caption2)
+                }
+            } else {
                 Image(systemName: icon)
                     .font(.title3)
-                Text(label)
-                    .font(.caption2)
             }
-            .foregroundColor(.secondary)
         }
+        .foregroundColor(.secondary)
         .buttonStyle(.plain)
     }
 }
@@ -672,30 +601,12 @@ struct WorkoutCompositionBar: View {
     
     private func colorFor(_ type: SegmentType) -> Color {
         switch type {
-        case .prepare: return .blue
-        case .work: return .red
-        case .rest: return .green
+        case .prepare: return .prepare
+        case .work: return .work
+        case .rest: return .rest
         }
     }
 }
-
-// MARK: - Models
-
-struct SavedWorkout: Identifiable {
-    let id: String
-    let title: String
-    let notes: String
-    let program: String
-    let workout: Workout
-    let createdAt: Date
-    let author: String
-    
-    var programText: String {
-        return program
-    }
-}
-
-
 
 // MARK: - Preview
 
