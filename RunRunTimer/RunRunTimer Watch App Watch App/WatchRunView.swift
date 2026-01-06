@@ -321,26 +321,23 @@ public final class WatchRunViewModel: ObservableObject {
 #Preview("Short Workout", traits: .fixedLayout(width: 205, height: 251)) {
     let workout = try! ProgramParser().parse("W6 R3 W6")
     return WatchRunView(workout: workout)
-        .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 9 (45mm)"))
 }
 
 #Preview("Running Workout", traits: .fixedLayout(width: 205, height: 251)) {
 	let workout = try! ProgramParser().parse("W60 R30 W60 R30")
 	return WatchRunView(workout: workout)
-		.previewDevice(PreviewDevice(rawValue: "Apple Watch Series 9 (45mm)"))
 }
 
 #Preview("With Label", traits: .fixedLayout(width: 205, height: 251)) {
-	let workout = try! ProgramParser().parse("W30@warmup R60@sprint W30@cooldown")
-	return WatchRunView(workout: workout)
-		.previewDevice(PreviewDevice(rawValue: "Apple Watch Series 9 (45mm)"))
+    let workout = try! ProgramParser().parse("W30@warmup R60@sprint W30@cooldown")
+    return WatchRunView(workout: workout)
 }
 
 #Preview("Long Intervals", traits: .fixedLayout(width: 176, height: 215)) {
-	let workout = try! ProgramParser().parse("W120 R180 W120 R180 W120")
-	return WatchRunView(workout: workout)
-		.previewDevice(PreviewDevice(rawValue: "Apple Watch SE (40mm)"))
+    let workout = try! ProgramParser().parse("W120 R180 W120 R180 W120")
+    return WatchRunView(workout: workout)
 }
-#endif
 
-#endif
+#endif // DEBUG
+
+#endif // os(watchOS)

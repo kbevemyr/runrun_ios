@@ -1,4 +1,0 @@
-module RunRuniOS {
-    header "/Users/katrin/runrun_ios/RunRunApp/.build/arm64-apple-macosx/debug/RunRuniOS.build/RunRuniOS-Swift.h"
-    requires objc
-}

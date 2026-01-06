@@ -12,32 +12,33 @@ public struct MainAppView: View {
 	
 	public var body: some View {
 		TabView(selection: $selectedTab) {
-			WorkoutLibraryView()
+			LibraryView()
 				.tabItem {
 					Label("Library", systemImage: "list.bullet")
 				}
 				.tag(0)
-            
-			LibraryView()
-				.tabItem {
-					Label("ClaudLib", systemImage: "list.bullet")
-				}
-				.tag(1)
 			
 			EditorView(isTabMode: true, onWorkoutSaved: {
 				// Byt till ClaudLib-tabben när workout är sparad
-				selectedTab = 1
+				selectedTab = 0
 			})
 				.tabItem {
 					Label("Add", systemImage: "plus")
 				}
-				.tag(2)
+				.tag(1)
 			
 			WatchSyncView()
 				.tabItem {
 					Label("Watch", systemImage: "applewatch")
 				}
-				.tag(3)
+				.tag(2)
+            /*
+            WorkoutLibraryView()
+                .tabItem {
+                    Label("Library", systemImage: "list.bullet")
+                }
+                .tag(3)
+             */
 		}
 		.onAppear {
 			// Aktivera WatchConnectivity vid start
